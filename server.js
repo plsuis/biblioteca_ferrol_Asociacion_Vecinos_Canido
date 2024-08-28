@@ -1,5 +1,5 @@
 // ARQUIVOS DE CABECEIRA
-
+console.log("hola")
 // MIDDLEWARES
 
 // END-POINTS
