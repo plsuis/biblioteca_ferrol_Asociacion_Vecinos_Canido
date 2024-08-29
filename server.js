@@ -1,5 +1,13 @@
 // ARQUIVOS DE CABECEIRA
-console.log("hola")
+const express = require("express");
+const path = require("path");
+const cors = require("cors");
+
+const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 // MIDDLEWARES
 
 // END-POINTS
@@ -12,3 +20,6 @@ console.log("hola")
 
 
 // LISTEN SERVER
+app.listen(3000, function () {
+    console.log("O SERVIDOR ESTA FUNCIONANDO");
+});
