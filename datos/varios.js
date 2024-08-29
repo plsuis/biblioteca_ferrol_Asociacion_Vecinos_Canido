@@ -4,7 +4,8 @@ const endpoints = {
         prestamos:"/xestion-prestamos"
     },
     paxina:{
-        formularioLibro: "/engadir-novo-libro"
+        formularioLibro: "/engadir-novo-libro",
+        formularioPrestamo: "/facer-novo-prestamo"
     }
 }
 
