@@ -4,6 +4,7 @@ const path = require("path");
 const cors = require("cors");
 
 const { paxinaInicio, paxinaBiblioteca, paxinaPrestamos, paxinaNovoLibro } = require("./middlewares/funcions.views");
+const { endpoints } = require("./datos/varios.js");
 
 const app = express();
 
@@ -16,10 +17,10 @@ app.use(express.static(path.join(__dirname,"public")))
 // END-POINTS
 
 
-app.get("/", paxinaInicio); // index.html
-app.get("xestion-biblioteca", paxinaBiblioteca); // biblioteca.html
-app.get("xestion-prestamos", paxinaPrestamos); // prestamos.html
-app.get("engadir-novo-libro", paxinaNovoLibro); // novo-libro.html
+//app.get("/", paxinaInicio); // index.html
+app.get(endpoints.xestion.biblioteca, paxinaBiblioteca); // biblioteca.html
+app.get(endpoints.xestion.prestamos, paxinaPrestamos); // prestamos.html
+app.get(endpoints.paxina.formularioLibro, paxinaNovoLibro); // novo-libro.html
 // GETTERS
 
 // PUTS
