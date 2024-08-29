@@ -32,15 +32,15 @@
         <div class="formulario">
           <form id="form-novo-libro">
             <div>
-            <label>Título</label>
+            <label>Título<span class="asterisco"> *</span></label>
             <input id="input-titulo" type="text" required/>
             </div>
             <div>
-            <label>Autor</label>
+            <label>Autor<span class="asterisco"> *</span></label>
             <input id="input-autor" type="text" required/>
             </div>
             <div>
-            <label>Xénero</label>
+            <label>Xénero<span class="asterisco"> *</span></label>
             <select id="input-xenero" required>
               <option>--Sen Especificar--</option>
               <option>Literatura Internacional</option>
@@ -65,7 +65,7 @@
             </select>
           </div>
             <div>
-            <label>Editorial</label>
+            <label>Editorial<span class="asterisco"> *</span></label>
             <input id="input-editorial" type="text" required/>
           </div>
             <div>
@@ -73,7 +73,7 @@
             <input id="input-coleccion" type="text" />
           </div>
             <div>
-            <label>ISBN (sin espacios)</label>
+            <label>ISBN (sin espacios)<span class="asterisco"> *</span></label>
             <input id="input-isbn" type="number" required/>
           </div>
             <div class="boton-formulario">
@@ -83,9 +83,9 @@
           
 
           </form>
-           
+          
         </div>
-              
+        <p class="detalle-formulario">Aqueles campos con un asterisco (<span class="asterisco">*</span>) indican que o campo e OBLIGATORIO</p>
     </section>
     <!------------------------------------------------------->
     <!-----------------------   FOOTER   -------------------->

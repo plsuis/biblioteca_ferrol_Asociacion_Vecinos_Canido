@@ -173,3 +173,9 @@ form input{
     background-color: #51545c;
     transition: 0.4s ease;
 }
+.detalle-formulario{
+    text-align: center;
+}
+.asterisco {
+    color:red;
+}
