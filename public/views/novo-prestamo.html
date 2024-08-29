@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Engadir Libro - Biblioteca da AV Canido</title>
+    <title>Facer un Préstamo - Biblioteca da AV Canido</title>
     <link href="../CSS/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href="../imaxes/av_canido_favicon.png" />
     <script type="module" async src="#####"></script>
@@ -27,58 +27,34 @@
     <!------------------------------------------------------->
     <section class="pax-form">
       
-      <h2>ENGADIR NOVO LIBRO</h2>
+      <h2>FACER UN PRÉSTAMO</h2>
         
         <div class="formulario">
-          <form id="form-novo-libro">
+          <form id="form-novo-prestamo">
             <div>
             <label>Título</label>
-            <input id="input-titulo" type="text" required/>
+            <input id="input-titulo-prestamo" type="text" required/>
             </div>
             <div>
             <label>Autor</label>
-            <input id="input-autor" type="text" required/>
+            <input id="input-autor-prestamo" type="text" required/>
             </div>
+            
             <div>
-            <label>Xénero</label>
-            <select id="input-xenero" required>
-              <option>--Sen Especificar--</option>
-              <option>Literatura Internacional</option>
-              <option>Literatura Sudamericana</option>
-              <option>Literatura Española Contemporánea</option>
-              <option>Literatura Galega</option>
-              <option>Literatura de Ferrol</option>
-              <option>Política e Historia</option>
-              <option>Poesía</option>
-              <option>Crítica Literaria</option>
-              <option>Friki</option>
-              <option>Literatura Infantil</option>
-              <option>Manuales</option>
-              <option>Arte e Historia do Arte</option>
-              <option>Diccionarios</option>
-              <option>Filosofía e Pensamento</option>
-              <option>Antigos e Curiosos</option>
-              <option>Clásicos</option>
-              <option>Novela Negra</option>
-              <option>Cine</option>
-              <option>Libros de Consulta</option>
-            </select>
+            <label>Apelidos Soci@</label>
+            <input id="input-apelidos-socio" type="text" required/>
           </div>
             <div>
-            <label>Editorial</label>
-            <input id="input-editorial" type="text" required/>
+            <label>Nome Soci@ </label>
+            <input id="input-nome-socio" type="text" required/>
           </div>
             <div>
-            <label>Colección</label>
-            <input id="input-coleccion" type="text" />
-          </div>
-            <div>
-            <label>ISBN (sin espacios)</label>
-            <input id="input-isbn" type="number" required/>
+            <label>Data do Préstamo</label>
+            <input id="input-data-prestamo" type="date" required/>
           </div>
             <div class="boton-formulario">
-            <button class="boton-enviar-libro">CONFIRMAR</button>
-            <button class="boton-cancelar-libro">CANCELAR</button>
+            <button class="boton-enviar-pretsamo">CONFIRMAR</button>
+            <button class="boton-cancelar-pretsamo">CANCELAR</button>
           </div>
           
 
