@@ -21,6 +21,7 @@
     <!------------------------------------------------------->
     <header class="header-xestion">
       <div class="logo-xestion"><img src="../imaxes/av_canido_logo.png"></div>
+      <button class="boton-volver" onclick="history.back();"><img src="../imaxes/arrow-left.svg"></button> 
   </header>
     <!------------------------------------------------------->
     <!------------------------   MAIN   --------------------->
@@ -48,9 +49,13 @@
             <label>Nome Soci@<span class="asterisco"> *</span></label>
             <input id="input-nome-socio" type="text" required/>
           </div>
-            <div>
+          <div>
             <label>Data do Préstamo<span class="asterisco"> *</span></label>
             <input id="input-data-prestamo" type="date" required/>
+          </div>
+          <div>
+            <label>Data de Devolución<span class="asterisco"> *</span></label>
+            <input id="input-data-devolucion" type="date" required/>
           </div>
             <div class="boton-formulario">
             <button class="boton-enviar-pretsamo">CONFIRMAR</button>
@@ -61,7 +66,7 @@
           </form>
           
         </div>
-        <p class="detalle-formulario">Aqueles campos con un asterisco (<span class="asterisco">*</span>) indican que o campo e OBLIGATORIO</p>
+        <p class="detalle-formulario">Aqueles campos cun asterisco (<span class="asterisco">*</span>) indican que o campo e OBLIGATORIO</p>
     </section>
     <!------------------------------------------------------->
     <!-----------------------   FOOTER   -------------------->
