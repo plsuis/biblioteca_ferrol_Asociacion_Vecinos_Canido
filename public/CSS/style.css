@@ -136,15 +136,46 @@ h2{
 
 /* -------------------------CSS DOS FORMULARIOS--------------------- */
 
-
+.formulario{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
 form div{
-    background-color: pink;
     margin: 20px 10px;
     display: flex;
+    justify-content: space-between;
+    width: 330px;
+}
+form label {
+    align-self: left;
+}
+form input{
+    align-self: right;
     
 }
-
-form input{
-    justify-self: right;
+.boton-formulario{
+    justify-content: center;
+    align-items: center; 
+    gap: 10px;
+}
+.boton-formulario button{
+    background-color: #0981fa;
+    color: white;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.4s ease;
     
+
+}
+.boton-formulario button:hover{
+    background-color: #51545c;
+    transition: 0.4s ease;
+}
+.detalle-formulario{
+    text-align: center;
+}
+.asterisco {
+    color:red;
 }
