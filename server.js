@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname,"public")))
 // MIDDLEWARES
 
 // END-POINTS
-app.use(express.static(path.join(__dirname, "public")));
+
 
 app.get("/", paxinaInicio); // index.html
 app.get("xestion-biblioteca", paxinaBiblioteca); // biblioteca.html
