@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname,"public")))
 // END-POINTS
 
 // isto é unha proba para editar un commit
+// isto é outra mensaxe de comentario
 app.get(endpoints.xestion.biblioteca, paxinaBiblioteca); // biblioteca.html
 app.get(endpoints.xestion.prestamos, paxinaPrestamos); // prestamos.html
 app.get(endpoints.paxina.formularioLibro, paxinaNovoLibro); // novo-libro.html
