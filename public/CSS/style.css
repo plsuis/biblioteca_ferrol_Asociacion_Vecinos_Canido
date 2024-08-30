@@ -98,6 +98,16 @@ footer{
     flex-direction: column;
     gap: 10px;
 }
+#form-inicio-sesion div{
+display: flex;
+gap: 1px;
+justify-content: center;
+}
+
+.ollo{
+    width: 30px;
+}
+.condicion-usuario {color:red;}
 #form-inicio-sesion input{
 padding: 10px;
 border: 1px solid #0981fa;
