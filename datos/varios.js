@@ -1,9 +1,14 @@
 const endpoints = {
     xestion: {
-        biblioteca: "/xestion-biblioteca",
+        bibliotecaAdmin: "/xestion-biblioteca",
         prestamos:"/xestion-prestamos"
     },
-    paxina:{
+    paxinas: {
+        logueo:"/iniciar-sesion",
+        bibliotecaSenUsuario:"/nosos-libros",
+        inicioAdmin:"/administracion"
+    },
+    formularios:{
         formularioLibro: "/engadir-novo-libro",
         formularioPrestamo: "/facer-novo-prestamo"
     }
