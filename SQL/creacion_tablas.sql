@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS Usuario
   CHECK (ROL_Usuario IN ('admin','socio','administrativo')) 
 );
 
--- TABLA LIBRO PRESTADO
+-- TABLA LIBRO PRESTADO :
 
 CREATE TABLE IF NOT EXISTS Libro_Prestado
 (
