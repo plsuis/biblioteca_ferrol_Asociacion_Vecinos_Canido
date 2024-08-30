@@ -9,8 +9,90 @@ html {
     padding: 0px;
     font-family: Roboto;
 }
+/* -------------------------CSS DO INDEX(user sen rexistrar)--------------------- */
 
-/* -------------------------CSS DO INDEX--------------------- */
+.logo-centrado{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+h1{
+    font-family: Comfortaa;
+    border-top: 1px solid black;
+    width: 30%;
+    text-align: center;
+    padding-top: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    justify-content: right;
+    margin: 10px;
+    color: #0981fa;
+}
+nav ul li a{
+    text-decoration: none;
+    color: #0981fa;
+}
+nav ul li a:hover{
+    text-decoration: underline;
+}
+
+.pax-inicio-sen-rexistrar{
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+}
+#barra-busqueda{
+    padding: 15px 15px 15px 50px;
+    width: 500px;
+    border: 2px solid #0981fa;
+    border-radius: 15px;
+    margin-right: 16px;
+    font-size: 17px;
+    
+}
+#boton-busqueda{
+    background-color: #0981fa;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    transition-duration: 0.2s;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#boton-busqueda:hover {
+    background-color: #a2a7b4;
+    transition-duration: 0.2s;
+}
+  
+  
+#boton-busqueda:active {
+    background-color: #51545c;
+    transition: 0s
+}
+
+
+footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #0981fa;
+    color:white;
+    padding: 5em;
+    text-align: center;
+    margin-top: 2em;
+    
+}
+
+
+/* -------------------------CSS DO INDEX ADMINISTRADOR--------------------- */
 .header-index {
     display: flex;
     flex-direction: column;
@@ -20,13 +102,7 @@ html {
     
 }
 
-h1{
-    font-family: Comfortaa;
-    border-top: 1px solid black;
-    width: 20%;
-    text-align: center;
-    padding-top: 10px;
-}
+
 
 .pax-inicio{
     display: flex;
@@ -50,13 +126,6 @@ h1{
     transition: 0.4s ease;
 }
 
-footer{
-    background-color: #0981fa;
-    color:white;
-    padding: 5em;
-    text-align: center;
-    margin-top: 2em;
-}
 
 /* -------------------------CSS DAS XESTIÓNS--------------------- */
 .header-xestion{
