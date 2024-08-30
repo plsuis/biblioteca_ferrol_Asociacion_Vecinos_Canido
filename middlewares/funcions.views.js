@@ -6,17 +6,40 @@ const paxinaInicio = (req, res) => {
     };
     res.sendFile("./index.html", optionsRuta);
 };
-const paxinaBiblioteca = (req, res) => {
+
+const paxinaBibliotecaSenUsuario = (req, res) => {
     const optionsRuta = {
         root: path.join(__dirname, "../public"),
     };
     res.sendFile("./views/biblioteca.html", optionsRuta);
 };
+
+const paxinaLogueoAdmin = (req, res) => {
+    const optionsRuta = {
+        root: path.join(__dirname, "../public"),
+    };
+    res.sendFile("./views/login-admin.html", optionsRuta);
+};
+
+const paxinaInicioAdmin = (req, res) => {
+    const optionsRuta = {
+        root: path.join(__dirname, "../public"),
+    };
+    res.sendFile("./views/inicio-admin.html", optionsRuta);
+};
+
+
+const paxinaBiblioteca = (req, res) => {
+    const optionsRuta = {
+        root: path.join(__dirname, "../public"),
+    };
+    res.sendFile("./views/biblioteca-admin.html", optionsRuta);
+};
 const paxinaPrestamos = (req, res) => {
     const optionsRuta = {
         root: path.join(__dirname, "../public"),
     };
-    res.sendFile("./views/prestamos.html", optionsRuta);
+    res.sendFile("./views/prestamos-admin.html", optionsRuta);
 };
 const paxinaNovoLibro = (req, res) => {
     const optionsRuta = {
@@ -33,6 +56,9 @@ const paxinaNovoPrestamo = (req, res) => {
 
 module.exports = {
     paxinaInicio,
+    paxinaBibliotecaSenUsuario,
+    paxinaLogueoAdmin,
+    paxinaInicioAdmin,
     paxinaBiblioteca,
     paxinaPrestamos,
     paxinaNovoLibro,

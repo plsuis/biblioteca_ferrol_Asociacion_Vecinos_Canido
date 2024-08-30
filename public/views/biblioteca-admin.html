@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- ESTE SERÁ EL INDEX QUE TIENE LA BARRA DE BUSQUEDA Y LOS ENLACES A LA PAGINA DE LOGEO Y DEMAS -->
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Biblioteca da AV Canido</title>
+    <title>Xestión Biblioteca - Biblioteca da AV Canido</title>
     <link href="../CSS/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href="../imaxes/av_canido_favicon.png" />
     <script type="module" async src="#####"></script>
@@ -20,21 +20,34 @@
     <!-----------------------   HEADER   -------------------->
     <!------------------------------------------------------->
     <header class="header-xestion">
-      <div class="logo-index"><img src="../imaxes/av_canido_logo.png"></div>
-      <h2>INICIAR SESIÓN</h2>
-    </header>
+      <div class="logo-xestion"><img src="../imaxes/av_canido_logo.png"></div>
+      <h2>XESTIÓN DA BIBLIOTECA</h2>
+  </header>
     <!------------------------------------------------------->
     <!------------------------   MAIN   --------------------->
     <!------------------------------------------------------->
-    <section class="pax-inicio-sesion">
-      <div class="formulario">
-        <form id="form-inicio-sesion">
-          <input id="nome-usuario" type="text" placeholder="Nome de Usuario">
-          <input id="contrasinal-usuario" type="text" placeholder="Contrasinal">
-          <button type="submit" id="boton-confirmar-usuario">ENTRAR</button>
-          <a href="/administracion">(TEMPORTAL)Entrar como administrador</a>
-        </form>
+    <section class="pax-xestion">
+      <div>
+        
+        <a class="links-form-libro" href="/engadir-novo-libro">ENGADIR NOVO LIBRO</a>
       </div>
+      <div class="lista-libros">
+          <h3>LISTA DE LIBROS</h3> <button class="libros-pdf"><img src="../imaxes/file-type-pdf.svg"></button>
+          <table class="tabla-libros">
+            <theader>
+              <th>nºRexistro</th>
+              <th>Título</th>
+              <th>Autor</th>
+              <th>Xénero</th>
+              <th>Editorial</th>
+              <th>Colección</th>
+              <th>ISBN</th>
+              <th>Prestado</th>
+            </theader>
+            <tbody class="body-tabla"></tbody>
+          </table>
+      </div>
+              
     </section>
     <!------------------------------------------------------->
     <!-----------------------   FOOTER   -------------------->

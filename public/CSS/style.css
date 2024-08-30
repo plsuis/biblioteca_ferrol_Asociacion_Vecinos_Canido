@@ -85,7 +85,7 @@ footer{
     right: 0;
     background-color: #0981fa;
     color:white;
-    padding: 5em;
+    padding: 2em;
     text-align: center;
     margin-top: 2em;
     
@@ -294,4 +294,20 @@ form input{
 }
 .asterisco {
     color:red;
+}
+
+
+
+/***********************************************************/
+.tabla-libros-no-editable{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 2em;
+}
+
+.tabla-libros-no-editable th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
 }
