@@ -1,3 +1,4 @@
+const { Libro } = require("../clases/clases.js");
 const { unhabbdd } = require("./datos.bbdd.js");
 const { OperacionsBBDD2, BBDD } = require("./operacions.js");
 const { sentenciaSql, valores } = require("./sentencias.bbdd.js");
@@ -20,7 +21,17 @@ const { sentenciaSql, valores } = require("./sentencias.bbdd.js");
             
             /*let valorDevolto = await operacionBBDD.insertar(sentenciaSql,valores);
             console.log('... ',valorDevolto)*/
-            let valorDevolto2 = await operacionBBDD2.insertar(sentenciaSql,valores)
+            //let valorDevolto2 = await operacionBBDD2.insertar(sentenciaSql,valores);
+            let datosBorrar = {
+                tabla:'Libros',
+                campo:'Anho_edicion_libros',
+                valor:1967
+            }
+            const refLibro = new Libro(operacionBBDD2)
+            let sentencia = sentenciaSql.borrar(datosBorrar);
+            valores = [];
+            let mensaxe = "..."
+            let valorDevolto2 = await refLibro.executar(sentencia,valores,mensaxe)
             console.log('... ',valorDevolto2)
             // Consultar para verificar la inserción
             /*

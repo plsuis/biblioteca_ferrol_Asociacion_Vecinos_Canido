@@ -69,14 +69,17 @@ class OperacionsBBDD2{
     this.db = bbdd;
    }
     
-    insertar(sentenciaSql,valores){
+    executar(sentenciaSql,valores,mensaxe){
         return new Promise((resolve,reject)=>{
             this.db.run(sentenciaSql,valores,
                 function (err) {
-                    (err) ? reject(err) : resolve(`inserta en base2 ${this.lastID}`); 
+                   // (err) ? reject(err) : resolve(`inserta en base2 ${this.lastID}`); 
+                   (err) ? reject(err) : resolve(mensaxe); 
+
                 })
         })
     }
+    
     consultar(sqlConsulta) {
         return new Promise((resolve, reject) => {
             this.db.all(sqlConsulta, [], (error, rows) => {
