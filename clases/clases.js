@@ -22,6 +22,7 @@ class Libro extends Material{
         this.operacions = baseDatosOperacions;
     }
     async executar(sentenciaSql,valores,mensaxe){
+        console.log(sentenciaSql,valores,mensaxe)
         return await this.operacions.executar(sentenciaSql,valores,mensaxe)
     }
     async lista(sentenciaSql){

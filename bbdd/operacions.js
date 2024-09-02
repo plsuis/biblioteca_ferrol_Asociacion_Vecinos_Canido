@@ -21,14 +21,14 @@ class BBDD{
     }
     creoBaseDatos(){
         return new Promise((resolve, reject) => {
-            this.db.exec(baseDatosASV),
-            (err) => {
+            this.db.exec(baseDatosASV,(err) => {
                 if (err) {
                     reject(err.message);
                 } else {
                     resolve("Tablas creadas con éxito.");
                 }
-            }
+            })
+            
         })
         
     }
@@ -71,6 +71,7 @@ class OperacionsBBDD2{
     
     executar(sentenciaSql,valores,mensaxe){
         return new Promise((resolve,reject)=>{
+            console.log('operacions bbdd2',sentenciaSql,valores,mensaxe)
             this.db.run(sentenciaSql,valores,
                 function (err) {
                    // (err) ? reject(err) : resolve(`inserta en base2 ${this.lastID}`); 
