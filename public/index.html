@@ -7,7 +7,7 @@
     <title>Biblioteca da AV Canido</title>
     <link href="./CSS/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href="./imaxes/av_canido_favicon.png" />
-    <!-- <script type="module" async src="#####"></script> -->
+    <script type="module" async src="./JavaScript/copyright-auto.js"></script>
 
     <!--FONTS = Comfortaa | Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,20 +43,8 @@
     <!-----------------------   FOOTER   -------------------->
     <!------------------------------------------------------->
     <footer>
-        <p class="copyright"></p>
-      </div>
+      <p class="copyright"></p>  
     </footer>
-    
-    
-    <script type="module">
-      
-      /*----Cambiar o ano do copyright automaticamente-----*/
-      const copyright = document.querySelector('.copyright');
-      const AnoActual = new Date().getFullYear();
-      const copyrightTexto = `&#169; ${AnoActual} Asociación Veciñal de Canido`;
-      copyright.innerHTML = copyrightTexto;
-      
-    </script>
 
-  </body>
+</body>
 </html>
