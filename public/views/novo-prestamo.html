@@ -51,18 +51,17 @@
           </div>
           <div>
             <label>Data do Préstamo<span class="asterisco"> *</span></label>
-            <input id="input-data-prestamo" type="date" required/>
+            <input id="input-data-prestamo" type="date" onchange="dataDevolucionAuto();" required/>
           </div>
           <div>
             <label>Data de Devolución<span class="asterisco"> *</span></label>
             <input id="input-data-devolucion" type="date" required/>
           </div>
             <div class="boton-formulario">
-            <button class="boton-enviar-pretsamo">CONFIRMAR</button>
-            <button class="boton-cancelar-pretsamo">CANCELAR</button>
+            <button class="boton-enviar-prestamo">CONFIRMAR</button>
+            <button class="boton-cancelar-prestamo">CANCELAR</button>
           </div>
           
-
           </form>
           
         </div>
@@ -78,6 +77,16 @@
         </p>
       </div>
     </footer>
+    <script>
+      function dataDevolucionAuto() {
+        
+        var date = new Date(document.getElementById("input-data-prestamo").value);
+        date.setDate(date.getDate() + 15);
+        document.getElementById("input-data-devolucion").valueAsDate = date;
+      }
+
+    </script>
+
     
   </body>
 </html>
