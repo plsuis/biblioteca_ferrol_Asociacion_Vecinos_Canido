@@ -24,7 +24,7 @@ const lecturaDatos = async () => {
             interrogacions:'?,?,?,?,?'
         }
         
-        let sentencia = sentenciaSql.selecionarTODO("Libros")
+        let sentencia = sentenciaSql.selecionarTabla("Libros")
         let valores = ['Don Quijote de la Mancha', 'Miguel de Cervantes', 'LIB005', 'Francisco de Robles', '1605'];
         let mensaxe = "...insertado"
         //let valorDevolto2 = await refLibro.executar(sentencia,valores,mensaxe)

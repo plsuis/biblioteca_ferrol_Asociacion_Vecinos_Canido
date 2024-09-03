@@ -3,7 +3,7 @@ let sentenciaSql ={
         console.log( `INSERT INTO ${tabla} (${campos[0]},${campos[1]},${campos[2]},${campos[3]},${campos[4]}) VALUES (${interrogacions})`)
         return `INSERT INTO ${tabla} (${campos[0]},${campos[1]},${campos[2]},${campos[3]},${campos[4]}) VALUES (${interrogacions})`;
     },
-    selecionarTODO : function (tabla){
+    selecionarTabla : function (tabla){
         return `SELECT * FROM ${tabla}`;
     },
     borrar : function (dato){
