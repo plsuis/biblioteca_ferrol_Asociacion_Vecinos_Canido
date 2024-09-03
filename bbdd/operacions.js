@@ -4,19 +4,6 @@ class BBDD{
     constructor(bbdd){
         this.db = bbdd;
     }
-    creoBaseDatos2(){
-        return new Promise((resolve, reject) => {
-            this.db.exec(tablaLibros,(err)=> {
-            if(err){
-                reject(err.message);
-            } else {
-                resolve("Tabla1 creadas con éxito.");
-            }
-        })
-            
-        })
-        
-    }
     creoBaseDatos(){
         return new Promise((resolve, reject) => {
             this.db.exec(baseDatosASV,(err) => {
