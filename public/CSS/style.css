@@ -79,7 +79,6 @@ nav ul li a:hover{
 
 
 footer{
-    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
@@ -230,6 +229,11 @@ h2{
     border-collapse: collapse;
     padding: 10px;
 }
+.tabla-libros td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+}
 
 .links-form-prestamo{
     text-decoration: none;
@@ -317,6 +321,11 @@ form input{
 }
 
 .tabla-libros-no-editable th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+}
+.tabla-libros-no-editable td {
     border: 1px solid black;
     border-collapse: collapse;
     padding: 10px;
