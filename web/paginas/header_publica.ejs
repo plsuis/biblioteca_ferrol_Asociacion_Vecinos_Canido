@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="HTML,CSS, JavaScript">
+    <!--"http://localhost:5000/editarLibro/1"   "http://localhost:5000/eliminarLibro/1"-->
+    <!-- el puto punto "./css/bootstrap.css"impide cargar css en 'editar' y 'borrar'-->
+    <link rel="stylesheet"  href="/css/bootstrap.css"><!--vincular bootstrap a proyectos web--><!--sin punto delante de la barra O.k.-->
+     <!-- el puto punto "/css/estilos.css" impide cargar css en 'editar' y 'borrar'-->
+    <link rel="stylesheet"   href="/css/estilos.css">
+    <title>header</title>
+</head>
+<body>
+    <br/>
+
+</body>
+
+<div class="container"> <!--¿NO lo cierra???-->
+    <!--el puto punto "./img/biblioteca.jfif" me estaba jodiendo en 'editar ' y 'borrar' (impedia cargar la imagen)-->
+    <img src="/img/biblioteca.jfif" alt="una imagen" class="banner">
+
+    <nav class="nvabar navbar-expand-lg navbar-light bg-light" style="width:850px;">
+    <!--<a class="navbar-brand" href="/">Aplicacion</a>-->
+    <a class="navbar-light" href="/">Aplicacion</a>&nbsp; <!--directorio RAIZ--><!--enrutamiento pagina INDEX--><!--"/index"-->
+    <ul class="navbar-nav mr-auto" style="display:inline-flex">
+        <span>&nbsp&nbsp&nbsp</span>  
+        <li class="nav-item"><a class="navbar-light" href="/consulta_libros">Consultas Libros</a></li><!--pagina consulta libros--> 
+        <span>&nbsp&nbsp&nbsp</span>
+        <li class="nav-item"><a class="navbar-light" href="/contacto">Contacto</a></li><!--enrutamiento pagina consulta prestamos-->
+    </ul>
+</div>
+</html>

@@ -1,0 +1,36 @@
+body{
+    width:850px;
+    margin: 0 auto;
+}
+h1{
+    text-align:center;
+}
+.grande{
+    width:750px;
+    height:600px;
+}
+.icono{
+    width:50px;
+    height:50px;
+    height:20px;
+}
+.banner{
+    width:850px;
+    height:150px;
+}
+.fijo{
+    width:35px;
+}
+p{
+    text-align:justify;
+}
+footer{
+    width:850px;
+    border: solid 2px;
+    border-color:blue;
+}
+address{
+    padding-top:15px;
+    font-family:"Times New Roman";
+    text-align:center;
+}

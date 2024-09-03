@@ -1,0 +1,44 @@
+<div class="form-group row">
+    <label class="col-form-label col-sm-2" for="titulo">Titulo</label>
+    <div class="col sm-15"><!--numero caracteres de ancho-->
+        <input autofocus class="form-control" name="titulo" value="<%= modelo.titulo%>"/>
+    </div>
+</div>
+<p></p>
+<div class="form-group row">
+    <label class="col-form-label col-sm-2" for="autor">Autor</label>
+    <div class="col sm-15">
+        <input  class="form-control" name="autor" value="<%= modelo.autor%>"/>
+    </div>
+</div>
+<p></p>
+<div class="form-group row">
+    <label class="col-form-label col-sm-2" for="genero">Genero</label>
+    <div class="col sm-10">
+        <input  class="form-control" name="genero" value="<%= modelo.genero%>"/>
+    </div>
+</div>
+<p></p>
+<div class="form-group row">
+    <label class="col-form-label col-sm-2" for="editorial">Editorial</label>
+    <div class ="col sm-15">
+        <input  class="form-control" name="editorial" value="<%= modelo.editorial%>"/>
+    </div>
+</div>
+<p></p>
+<div class="form-group row">
+    <label class="col-form-label col-sm-2" for="coleccion">Coleccion</label>
+    <div class ="col sm-15">
+        <input  class="form-control" name="coleccion" value="<%= modelo.coleccion%>"/>
+    </div>
+</div>
+<p></p>
+<div class="form-group row">
+    <label class="col-form-label col-sm-2" for="ISBN">ISBN</label>
+    <div class="col sm-15">
+        <input  class="form-control" name="ISBN" value="<%= modelo.ISBN%>"/>
+    </div>
+</div>
+
+
+<!--<textarea class="form-control" cols="20" rows="7" name="descripcion" maxlength="32000" value="<%= modelo.descripcion%>"-->

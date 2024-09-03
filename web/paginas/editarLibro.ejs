@@ -1,0 +1,17 @@
+<%- include('header') -%>
+<h1>Actualizar registro</h1>
+<form action="/editarLibro/<%= modelo.id_libro %>" method = "post"><!--cearLibro, indicamos el id del libro-->
+    <div class="form-horizontal">
+        <%- include('editorCentral') -%><!--formularios insertar libro-->
+        <br>
+        <div class="form-group row">
+            <label  class="col-form-label col-sm-2"></label>
+            <div class="col-sm-10">
+                <input type="submit" value="Actualizar" class="btn btn-default btn-success"/>
+                <a href="/lista_libros" class="btn btn-outline-dark cancel">Cancelar</a>
+            </div>
+        </div>
+    </div>    
+</form>
+<br>
+<%- include('footer') -%>

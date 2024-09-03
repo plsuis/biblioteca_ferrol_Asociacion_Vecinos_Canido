@@ -1,0 +1,44 @@
+<%- include('header') -%>
+
+<h1>LISTA PRESTAMOS = (<%= modelo.length%>)</h1>    <!--longitud/numero registros base datos (modelo contienee la base de datos)-->
+<div class="table-responsive-sm" style="width:850px">
+   <table class="table table-hover">
+        <thead>    
+            <tr>     
+                <th>Titulo</th>  
+                <th>DNI/socio</th>
+                <th>Nombre</th>
+                <th>ID Libro</th>
+                <th class="d-print-none"> 
+                    <a class="btn btn-sm btn-success" href="/crearPrestamo">   
+                        <img src="./img/gardar.svg" title="Guardar Prestamo"  alt="crear prestamo" class="icono">
+                    </a>
+                </th> 
+            </tr>
+        </thead>
+        <tbody>            <!--cuerpo de la tabla (modelo: base datos)-->
+           <% for(const producto of modelo){  %>    <!--recorre la base de datos y pinta la tabla (base datos)-->
+           <tr>
+                <td><%= producto.titulo%></td>
+                <td><%= producto.dni%></td>
+                <td><%= producto.nombre%></td>
+                <td><%= producto.id_libro_prestamo%></td> 
+            <!--    
+                    <td class="fijo"> 
+                        <a class="btn btn-sm btn-warning" href="/editarLibro/<%= producto.id_libro %>">   
+                            <img src="./img/pincel.svg" alt="editar" title="Editar libro" class="icono"/>
+                        </a>
+                    </td>
+            -->     
+                    <td class="fijo"> 
+                        <a class="btn btn-sm btn-danger" href="/eliminarLibroPrestamo/<%= producto.id_prestamo %>"> 
+                            <img src="./img/basura.svg" alt="borrar" title="Borrar Libro" class="icono"/>
+                        </a> 
+                    </td>  
+           </tr>
+            <%}%>
+        </tbody>
+    </table>
+</div>
+
+<%- include('footer') -%>

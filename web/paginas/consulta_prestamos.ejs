@@ -1,0 +1,25 @@
+<%- include('header') -%>
+<h1>CONSULTA PRESTAMOS = (<%= modelo.length%>)</h1>    <!--longitud/numero registros base datos (modelo contienee la base de datos)-->
+<div class="table-responsive-sm" style="width:850px">
+   <table class="table table-hover">
+        <thead>    
+            <tr>     
+                <th>Titulo</th>  
+                <th>DNI/socio</th>
+                <th>Nombre</th>
+                <th>ID Libro</th> 
+            </tr>
+        </thead>
+        <tbody>            <!--cuerpo de la tabla (modelo: base datos)-->
+           <% for(const producto of modelo){  %>    <!--recorre la base de datos y pinta la tabla (base datos)-->
+           <tr>
+                <td><%= producto.titulo%></td>
+                <td><%= producto.dni%></td>
+                <td><%= producto.nombre%></td>
+                <td><%= producto.id_libro_prestamo%></td>
+           </tr>
+            <%}%>
+        </tbody>
+    </table>
+</div>
+<%- include('footer') -%>

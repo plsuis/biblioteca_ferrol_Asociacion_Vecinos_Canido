@@ -1,0 +1,16 @@
+<%- include('header') -%>
+<h1>Eliminar Libro</h1>
+<form action="/eliminarLibro/<%= modelo.id_libro %>" method="POST">
+    <div class="form-horizontal">
+        <%- include('eliminarCentral') -%>   <!--formulario eliminacion de libro-->
+        <div class="form-group row">
+            <label class="col-form-label col-sm-2"></label>
+            <div class="col-sm-10">
+                <input type="submit" value="Eliminar" class="btn btn-default btn-danger"/>
+                <a class="btn btn-outline-dark cancel" href="/lista_libros">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+<%- include('footer') -%>

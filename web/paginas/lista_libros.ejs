@@ -1,0 +1,45 @@
+<%- include('header') -%>
+<h1>LISTA LIBROS = (<%= modelo.length%>)</h1>    <!--longitud/numero registros base datos (modelo contienee la base de datos)-->
+<div class="table-responsive-sm" style="width:850px">
+   <table class="table table-hover">
+        <thead>    
+            <tr>     
+                <th>Titulo</th>  
+                <th>Autor</th>
+                <th>Género</th>
+                <th>Editorial</th>
+                <th>Coleccion</th>
+                <th>ISBN</th>
+                <th class="d-print-none"> 
+                    <a class="btn btn-sm btn-success" href="/crearLibro">   
+                        <img src="./img/gardar.svg" title="Guardar libro"  alt="crear libro" class="icono">
+                    </a>
+                </th> 
+            </tr>
+        </thead>
+        <tbody>            <!--cuerpo de la tabla (modelo: base datos)-->
+           <% for(const producto of modelo){  %>    <!--recorre la base de datos y pinta la tabla (base datos)-->
+           <tr>
+                <td><%= producto.titulo%></td>
+                <td><%= producto.autor%></td>
+                <td><%= producto.genero%></td>
+                <td><%= producto.editorial%></td>
+                <td><%= producto.coleccion%></td>
+                <td><%= producto.ISBN%></td>  
+
+                <td class="fijo"> <!--boton editado , aplicar estilo-->
+                    <a class="btn btn-sm btn-warning" href="/editarLibro/<%= producto.id_libro %>">   <!--boton editar, nos direcciona/redirige a '/editar'-->
+                        <img src="./img/pincel.svg" alt="editar" title="Editar libro" class="icono"/>
+                    </a> <!--'editar' emplea el 'id_libro' de la tabla 'biblioteca' para acceder a un  registro-->
+                </td>
+                <td class="fijo"> <!--boton borrado -->
+                    <a class="btn btn-sm btn-danger" href="/eliminarLibro/<%= producto.id_libro %> ">  <!--boton borrar, nos direcciona/redirige a '/borrar'-->
+                        <img src="./img/basura.svg" alt="borrar" title="Borrar Libro" class="icono"/>
+                    </a> <!--'editar' emplea el 'id_libro' de la tabla 'biblioteca' para acceder a un  registro-->
+                </td>
+           </tr>
+            <%}%>
+        </tbody>
+    </table>
+</div>
+<%- include('footer') -%>

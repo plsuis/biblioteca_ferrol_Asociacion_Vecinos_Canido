@@ -1,0 +1,32 @@
+<%- include('header_publica') -%>
+
+<h1>CONSULTA LIBROS = (<%= modelo.length%>)</h1>    <!--longitud/numero registros base datos (modelo contienee la base de datos)-->
+<div class="table-responsive-sm" style="width:750px">
+   <table class="table table-hover">
+        <thead>    
+            <tr>
+                <th>ID libro</th>     
+                <th>Titulo</th>  
+                <th>Autor</th>
+                <th>Género</th>
+                <th>Editorial</th>
+                <th>Coleccion</th>
+                <th>ISBN</th> 
+            </tr>
+        </thead>
+        <tbody>            <!--cuerpo de la tabla (modelo: base datos)-->
+           <% for(const producto of modelo){  %>    <!--recorre la base de datos y pinta la tabla (base datos)-->
+           <tr>
+                <td><%= producto.id_libro%></td>
+                <td><%= producto.titulo%></td>
+                <td><%= producto.autor%></td>
+                <td><%= producto.genero%></td>
+                <td><%= producto.editorial%></td>
+                <td><%= producto.coleccion%></td>
+                <td><%= producto.ISBN%></td>  
+           </tr>
+            <%}%>
+        </tbody>
+    </table>
+</div>
+<%- include('footer') -%>
