@@ -21,6 +21,9 @@ class BBDD{
     get baseDeDatos(){
         return this.db;
     }
+    set novaBaseDeDatos(bbdd){
+        this.db = bbdd;
+    }
 }
 
 class OperacionsBBDD extends BBDD{
