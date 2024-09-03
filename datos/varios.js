@@ -6,11 +6,15 @@ const endpoints = {
     paxinas: {
         logueo:"/iniciar-sesion",
         bibliotecaSenUsuario:"/nosos-libros",
-        inicioAdmin:"/administracion"
+        inicioAdmin:"/administracion",
+        formularioLibro:"/formulario-libro",
+        formularioPrestamo:"/formulario-prestamo"
     },
-    formularios:{
-        formularioLibro: "/engadir-novo-libro",
-        formularioPrestamo: "/facer-novo-prestamo"
+    libros:{
+        insertar:"/insertar-libro",
+        prestar:"/prestar-libro",
+        borrar:"/borro-libro/:ano",
+        leotodos:"/leo-libros"
     }
 }
 
