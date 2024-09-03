@@ -1,4 +1,4 @@
-const { tablaLibros, baseDatosASV} = require('./datos.bbdd.js');
+const { baseDatosASV} = require('./datos.bbdd.js');
 
 class BBDD{
     constructor(bbdd){
