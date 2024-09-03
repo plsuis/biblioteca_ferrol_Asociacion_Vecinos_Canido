@@ -1,10 +1,17 @@
 const sqlite3 = require('sqlite3').verbose();
 const { isErro } = require('./helpers.bbdd.js');
 let arquivosBaseDatos = {
-    base1: './ficheiro/basedatos.fichero',
-    base2: './base2.db'
+    ficheiro: './ficheiro/basedatos.fichero',
+    base2: './base2.db',
+    base1: './base1.db',
+    nomefich:'basedatos.fichero'
 }
-let unhabbdd = new sqlite3.Database(arquivosBaseDatos.base1,sqlite3.OPEN_READWRITE,isErro);
+let unhabbdd = new sqlite3.Database(arquivosBaseDatos.ficheiro,sqlite3.OPEN_READWRITE,isErro);
+
+let outrabbdd = (ruta)=>{
+    return new sqlite3.Database(ruta,sqlite3.OPEN_READWRITE,isErro);
+
+}
 const tablaLibros = `CREATE TABLE IF NOT EXISTS Libros
                 (
     
@@ -82,5 +89,6 @@ module.exports = {
     tablaLibros,
     baseDatosASV,
     arquivosBaseDatos,
-    unhabbdd
+    unhabbdd,
+    outrabbdd
 }

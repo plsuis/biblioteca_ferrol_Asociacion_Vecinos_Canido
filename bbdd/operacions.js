@@ -1,40 +1,28 @@
-const { tablaLibros, baseDatosASV} = require('./datos.bbdd.js');
-const sqlite3 = require('sqlite3').verbose();
-const { isErro } = require('./helpers.bbdd.js');
+const { baseDatosASV} = require('./datos.bbdd.js');
 
 class BBDD{
     constructor(bbdd){
         this.db = bbdd;
     }
-    creoBaseDatos2(){
-        return new Promise((resolve, reject) => {
-            this.db.exec(tablaLibros,(err)=> {
-            if(err){
-                reject(err.message);
-            } else {
-                resolve("Tabla1 creadas con éxito.");
-            }
-        })
-            
-        })
-        
-    }
     creoBaseDatos(){
         return new Promise((resolve, reject) => {
-            this.db.exec(baseDatosASV),
-            (err) => {
+            this.db.exec(baseDatosASV,(err) => {
                 if (err) {
                     reject(err.message);
                 } else {
                     resolve("Tablas creadas con éxito.");
                 }
-            }
+            })
+            
         })
         
     }
 
     get baseDeDatos(){
         return this.db;
+    }
+    set novaBaseDeDatos(bbdd){
+        this.db = bbdd;
     }
 }
 
@@ -71,6 +59,7 @@ class OperacionsBBDD2{
     
     executar(sentenciaSql,valores,mensaxe){
         return new Promise((resolve,reject)=>{
+            console.log('operacions bbdd2',sentenciaSql,valores,mensaxe)
             this.db.run(sentenciaSql,valores,
                 function (err) {
                    // (err) ? reject(err) : resolve(`inserta en base2 ${this.lastID}`); 
