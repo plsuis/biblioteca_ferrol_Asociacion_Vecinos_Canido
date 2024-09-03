@@ -1,6 +1,4 @@
 const { tablaLibros, baseDatosASV} = require('./datos.bbdd.js');
-const sqlite3 = require('sqlite3').verbose();
-const { isErro } = require('./helpers.bbdd.js');
 
 class BBDD{
     constructor(bbdd){
