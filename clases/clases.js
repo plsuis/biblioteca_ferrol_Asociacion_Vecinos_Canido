@@ -33,12 +33,32 @@ class Libro extends Material{
 
 class Usuario{
 
-    constructor(campos,bbdd){
-        this.bbdd = bbdd
+    usuario;
+    apelido1;
+    apelido2;
+    dni;
+    rol = 'socio';
+    campos;
+    constructor(campos){
+        this.campos = campos;
+        this.usuario = campos.usuario;
+        this.apelido1 = campos.apelido1;
+        this.apelido2 = campos.apelido2;
+        this.dni = campos.dni;
+    }
+
+    get datosUsuario(){
+        this.campos.rol = this.rol;
+        return this.campos;
+    }
+
+    set actualizoUsuario(novoscampos){
+        this.campos = novoscampos;
     }
 }
 
 module.exports = {
-    Libro
+    Libro,
+    Usuario
 }
 

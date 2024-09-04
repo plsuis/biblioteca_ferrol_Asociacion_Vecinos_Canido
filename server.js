@@ -16,7 +16,11 @@ app.use(express.static(path.join(__dirname,"public")))
 const {
     readLibros,
     insertLibros
-} = require("./middlewares/libros/index.js")
+} = require("./middlewares/libros/index.js");
+const {
+    readUsuarios,
+    insertUsuarios
+} = require("./middlewares/usuarios/index.js")
 // END-POINTS
 
 app.get(endpoints.paxinas.bibliotecaSenUsuario, paxinaBibliotecaSenUsuario); // biblioteca.html
@@ -31,9 +35,15 @@ app.get(endpoints.paxinas.formularioPrestamo, paxinaNovoPrestamo)//novo-prestamo
 
 app.get(endpoints.libros.leotodos,readLibros)
 
+
+// usuarios
+
+app.get(endpoints.usuario.leotodos,readUsuarios)
+
 // POST
 
 app.post(endpoints.libros.insertar,insertLibros);
+app.post(endpoints.usuario.insertar,insertUsuarios)
 // PUTS
 
 // DELETES

@@ -11,7 +11,7 @@ const readLibros = async (req,res,next)=>{
     try {
         
         const refLibro = new Libro(operacionBBDD2);//si 
-        let sentencia = sentenciaSql.selecionarTODO("Libros")
+        let sentencia = sentenciaSql.selecionarTabla("Libros")
         let arrayLibros = await refLibro.lista(sentencia)
         console.log('... ',arrayLibros)
         res.send({
