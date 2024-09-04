@@ -22,9 +22,9 @@ const resgistroInputs = async () => {
     let i = 0;
     for (i = 0; i < datosRecibidos.lista.length; i++) {
     let datosLibros = datosRecibidos.lista[i];
-    console.log("datosLibros",datosLibros)
+    //console.log("datosLibros",datosLibros)
     let fila = document.createElement("tr");
-    console.log(fila)
+    //console.log(fila)
     tabla.append(fila);
           //let cliente = datosConvertidos[i];
    for (let propiedade in datosLibros) {

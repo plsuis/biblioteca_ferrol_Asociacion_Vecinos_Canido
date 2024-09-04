@@ -20,7 +20,7 @@ const lecturaDatos = async () => {
         const refLibro = new Libro(operacionBBDD2);//si
         let datosInsertar = {
             tabla:'Libros',
-            campos: 'Titulo_libros,Autor_libros,Codigo_libros,Editorial_libros,Anho_edicion_libros',
+            campos: 'Titulo_libros,Autor_libros,Codigo_libros,Editorial_libros,Xenero_Libros',
             interrogacions:'?,?,?,?,?'
         }
         
