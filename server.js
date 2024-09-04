@@ -15,7 +15,8 @@ app.use(express.static(path.join(__dirname,"public")))
 // MIDDLEWARES
 const {
     readLibros,
-    insertLibros
+    insertLibros,
+    prestarLibros
 } = require("./middlewares/libros/index.js");
 const {
     readUsuarios,
@@ -30,7 +31,8 @@ app.get(endpoints.xestion.bibliotecaAdmin, paxinaBiblioteca); // biblioteca-admi
 app.get(endpoints.xestion.prestamos, paxinaPrestamos); // prestamos-admin.html
 app.get(endpoints.paxinas.formularioLibro, paxinaNovoLibro); // novo-libro.html
 app.get(endpoints.paxinas.formularioPrestamo, paxinaNovoPrestamo)//novo-prestamo.html
-// GETTERS
+
+//------------------------ GETTERS
 // libros
 
 app.get(endpoints.libros.leotodos,readLibros)
@@ -40,13 +42,17 @@ app.get(endpoints.libros.leotodos,readLibros)
 
 app.get(endpoints.usuario.leotodos,readUsuarios)
 
-// POST
+//------------------------ POST
 
+// libros
 app.post(endpoints.libros.insertar,insertLibros);
+app.post(endpoints.libros.prestar,prestarLibros)
+// usuarios
 app.post(endpoints.usuario.insertar,insertUsuarios)
-// PUTS
 
-// DELETES
+//------------------------ PUTS
+
+//------------------------ DELETES
 
 
 // LISTEN SERVER

@@ -12,7 +12,7 @@ const endpoints = {
     },
     libros:{
         insertar:"/insertar-libro",
-        prestar:"/prestar-libro",
+        prestar:"/prestar-libro/",
         borrar:"/borro-libro/:ano",
         leotodos:"/leo-libros"
     },
@@ -23,7 +23,17 @@ const endpoints = {
         leotodos:"/leo-usuarios",
     }
 }
-
+let datosTablas = {
+    campos: {
+        Libro_Prestado: 'ID_Prestamos_Libro_Prestado,Prestado_Libro_Prestado,DNI_Usuario_Libro_Prestado,Codigo_Libros_Libro_Prestado',
+        Prestamos: 'FechaDesde_Prestamos,FechaHasta_Prestamos,Renovado_Prestamos,Codigo_Libros_Prestamos'
+    },
+    interrogacions:{
+        Libro_Prestado:'?,?,?,?',
+        Prestamos:'?,?,?,?'
+    }
+}
 module.exports = {
-    endpoints
+    endpoints,
+    datosTablas
 }

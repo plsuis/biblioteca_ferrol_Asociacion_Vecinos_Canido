@@ -4,9 +4,10 @@ let arquivosBaseDatos = {
     ficheiro: './ficheiro/basedatos.fichero',
     base2: './base2.db',
     base1: './base1.db',
-    nomefich:'basedatos.fichero'
+    nomefich:'basedatos.fichero',
+    nomefichBBDD:'outraBBDD.db'
 }
-let unhabbdd = new sqlite3.Database(arquivosBaseDatos.ficheiro,sqlite3.OPEN_READWRITE,isErro);
+let unhabbdd = new sqlite3.Database(arquivosBaseDatos.nomefich,sqlite3.OPEN_READWRITE,isErro);
 
 let outrabbdd = (ruta)=>{
     return new sqlite3.Database(ruta,sqlite3.OPEN_READWRITE,isErro);
