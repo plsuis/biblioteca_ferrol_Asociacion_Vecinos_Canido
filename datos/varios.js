@@ -1,7 +1,8 @@
 const endpoints = {
     xestion: {
         bibliotecaAdmin: "/xestion-biblioteca",
-        prestamos:"/xestion-prestamos"
+        prestamos:"/xestion-prestamos",
+        usuarios:"/xestion-usuarios"
     },
     paxinas: {
         logueo:"/iniciar-sesion",
