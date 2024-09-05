@@ -16,6 +16,9 @@ let sentenciaSql ={
     borrar : function (dato){
         return `DELETE FROM ${dato.tabla} WHERE ${dato.campo} = ${dato.valor}`;
     },
+    actualizarLibroPrestado: function(tabla,campos){
+        return `UPDATE ${tabla} SET ${campos[1]} = 0 WHERE ${campos[0]} = ?`
+    }
 
 } 
 const valores = ['Cien Años de Soledad', 'Gabriel García Márquez', 'LIB016', 'Sudamericana', '1967']

@@ -21,6 +21,9 @@ class Material{
     prestar(){
         throw new TypeError("non podes instanciar este método")
     }
+    devolver(){
+        throw new TypeError("non podes instanciar este método")
+    }
 }
 
 class Libro extends Material{
@@ -114,12 +117,51 @@ class Libro extends Material{
             //4º insertar os datos na tabla 'LIBRO_PRESTADO'
             let insertadoLibroPrestado = await this.executar(sentencia,datosTablas.valores.Libro_Prestado,"insertado en Libro_Prestado")
             console.log("insertadoLibroPrestado ",insertadoLibroPrestado)
+            return insertadoLibroPrestado
             //return await this.executar(sentencia,datosTablas.valores.Libro_Prestado,"insertado en Libro_Prestado")
         }catch(error){
             console.error("error insertando datos en Libro_Prestado",error)
         }
         
         return "sentencias executadas"
+    }
+
+    async devolver(req,sentenciaSql){
+        /**
+         * Actualizaremos a tabla 'Libro_Prestado' o campo 'Prestado_Libro_Prestado' a 0
+         * Necesito do cliente:
+         * > id_libro_prestado
+         * 
+         */
+        let datosTablas = {
+            tablas:{
+                Libro_Prestado:"Libro_Prestado"
+            },
+            campos: {
+                Libro_Prestado: ['ID_Prestamos_Libro_Prestado','Prestado_Libro_Prestado','DNI_Usuario_Libro_Prestado','Codigo_Libros_Libro_Prestado'],
+            },
+            interrogacions:{
+                Libro_Prestado:'?,?,?,?',
+            },
+            valores:{
+                Libro_Prestado:[parseInt(req.query.id_libro_prestado)],
+            }
+        }
+        let sentencia;
+        try{
+            console.log("req.params.id_libro_prestado ",req.params,req.params.id_libro_prestado)
+            //1º Deberemos realizar a inserción na tabla "PRESTAMOS"
+            sentencia = sentenciaSql.actualizarLibroPrestado(datosTablas.tablas.Libro_Prestado,datosTablas.campos.Libro_Prestado)
+            console.log("sentencia ",sentencia)
+            let actualizadoLibroPrestado = await this.executar(sentencia,datosTablas.valores.Libro_Prestado,"actualizado Libro_Prestado")
+            console.log("actualizadoLibroPrestado ", actualizadoLibroPrestado)
+            return actualizadoLibroPrestado
+        }catch(error){
+            console.error("error devolvendo libros",error)
+        }
+
+
+
     }
     
 }
