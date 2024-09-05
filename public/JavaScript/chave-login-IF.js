@@ -7,16 +7,18 @@
 // IMPORTANTE: A chave pode verse neste JS que está na carpeta public polo que nun futuro teremos que ocultala (posiblemente mediante o token)
 
 const ollo = document.querySelector(".ollo");
-const chaveSecreta = document.getElementById("chave-secreta");
+const contrasinal = document.getElementById("contrasinal");
+const usuario = document.getElementById("usuario");
+
 const botonConfirmarUsuario = document.querySelector("#boton-confirmar-usuario");
 
 function verContrasinal() {
         
-    if (chaveSecreta.type === "password") {
-          chaveSecreta.type = "text";
+    if (contrasinal.type === "password") {
+          contrasinal.type = "text";
           ollo.src = "../imaxes/eye-closed.svg";
     } else {
-          chaveSecreta.type = "password";
+          contrasinal.type = "password";
           ollo.src = "../imaxes/eye.svg";
     }
 };
@@ -26,17 +28,17 @@ ollo.addEventListener("click", async () => {
 });
 
 
-
 botonConfirmarUsuario.addEventListener("click", async () => {
     var condicionUsuario = document.querySelector(".condicion-usuario");
 
         
-    let infoInput = chaveSecreta.value;
-    if (infoInput === "Canid0") {
+    let valorContrasinal = contrasinal.value;
+    let valorUsuario = usuario.value
+    if (valorContrasinal === "Canid0" && valorUsuario === "Administrador") {
         location.replace("/administracion");
           
     }else{
-        condicionUsuario.innerHTML = "A chave non é correcta";
+        condicionUsuario.innerHTML = "A información non é correcta";
           
     }
 

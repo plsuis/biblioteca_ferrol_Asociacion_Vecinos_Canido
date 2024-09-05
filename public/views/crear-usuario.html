@@ -8,7 +8,7 @@
     <link href="../CSS/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href="../imaxes/av_canido_favicon.png" />
     <script type="module" async src="../JavaScript/copyright-auto.js"></script>
-    <script type="module" async src="../JavaScript/chave-login-IF.js"></script>
+    
 
     <!--FONTS = Comfortaa | Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,6 +48,14 @@
             <label>DNI<span class="asterisco"> *</span></label>
             <input id="dni-usuario" type="text" name="DNI_Usuario" required/>
           </div>
+          <div>
+            <label>ROL</label>
+            <select id="rol-usuario" name="ROL_Usuario">
+              <option>--Sen Rol--</option>
+              <option>socio</option>
+              <option>administrativo</option>
+            </select>
+          </div>
             <div class="boton-formulario">
             <button class="boton-aceptar-usuario">CONFIRMAR</button>
             <button class="boton-cancelar-usuario">CANCELAR</button>
@@ -63,5 +71,35 @@
     <footer>
         <p class="copyright"></p>
     </footer>
+    
+    <script type="module" async>
+  
+  
+    let formNovoUsuario = document.querySelector("#form-novo-usuario");
+    
+    
+    formNovoUsuario.addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      let datos = new FormData(formNovoUsuario);
+      let obxectoDato = {};
+      for(let [name,value] of datos){
+        console.log(`${name} = ${value}`)
+        obxectoDato[`${name}`] = value;
+      };
+    
+      let datoEnviadoJSON = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obxectoDato)
+    
+      }
+    let respostaRecibida = await fetch("/insertar-usuarios",datoEnviadoJSON);
+    let respostaRecibidaJSON = await respostaRecibida.json(); 
+    console.log("respostaRecibidaJSON",respostaRecibidaJSON);
+    
+    }) 
+  </script>
   </body>
 </html>
