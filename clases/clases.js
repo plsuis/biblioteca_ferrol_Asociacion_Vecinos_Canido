@@ -68,20 +68,7 @@ class Libro extends Material{
             Prestamos:'Prestamos',
             Libro_Prestado:'Libro_Prestado'
         }
-        /*let datosTablas = {
-            campos: {
-                Libro_Prestado: ['ID_Prestamos_Libro_Prestado','Prestado_Libro_Prestado','DNI_Usuario_Libro_Prestado','Codigo_Libros_Libro_Prestado'],
-                Prestamos: ['FechaDesde_Prestamos','FechaHasta_Prestamos','Renovado_Prestamos','Codigo_Libros_Prestamos']
-            },
-            interrogacions:{
-                Libro_Prestado:'?,?,?,?',
-                Prestamos:'?,?,?,?'
-            },
-            valores:{
-                Libro_Prestado:[],
-                Prestamos:[req.query.fechaDesde,req.query.fechaHasta,0,req.query.codigo] //FechaDesde_Prestamos,FechaHasta_Prestamos,Codigo_Libros_Prestamos
-            }
-        }*/
+        
         let recibidos;
         try{
             //1º Deberemos realizar a inserción na tabla "PRESTAMOS"
@@ -133,20 +120,7 @@ class Libro extends Material{
          * > id_libro_prestado
          * 
          */
-        /*let datosTablas = {
-            tablas:{
-                Libro_Prestado:"Libro_Prestado"
-            },
-            campos: {
-                Libro_Prestado: ['ID_Prestamos_Libro_Prestado','Prestado_Libro_Prestado','DNI_Usuario_Libro_Prestado','Codigo_Libros_Libro_Prestado'],
-            },
-            interrogacions:{
-                Libro_Prestado:'?,?,?,?',
-            },
-            valores:{
-                Libro_Prestado:[parseInt(req.query.id_libro_prestado)],
-            }
-        }*/
+       
         let sentencia;
         try{
             console.log("req.params.id_libro_prestado ",req.params,req.params.id_libro_prestado)
