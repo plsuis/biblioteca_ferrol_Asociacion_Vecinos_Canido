@@ -28,20 +28,19 @@
     <section class="pax-form">
       
       <h2>ENGADIR NOVO LIBRO</h2>
-        
         <div class="formulario">
           <form id="form-novo-libro">
             <div>
             <label>Título<span class="asterisco"> *</span></label>
-            <input id="input-titulo" type="text" required/>
+            <input id="input-titulo" type="text" name="Titulo_Libros" required/>
             </div>
             <div>
             <label>Autor<span class="asterisco"> *</span></label>
-            <input id="input-autor" type="text" required/>
+            <input id="input-autor" type="text" name="Autor_Libros" required/>
             </div>
             <div>
             <label>Xénero<span class="asterisco"> *</span></label>
-            <select id="input-xenero" required>
+            <select id="input-xenero" name="Xenero_Libros" required>
               <option>--Sen Especificar--</option>
               <option>Literatura Internacional</option>
               <option>Literatura Sudamericana</option>
@@ -66,16 +65,16 @@
           </div>
             <div>
             <label>Editorial<span class="asterisco"> *</span></label>
-            <input id="input-editorial" type="text" required/>
+            <input id="input-editorial" type="text" name="Editorial_Libros" required/>
           </div>
 
             <div>
             <label>ISBN (sin espacios)<span class="asterisco"> *</span></label>
-            <input id="input-isbn" type="number" required/>
+            <input id="input-isbn" type="text" name="Codigo_Libros" required/>
           </div>
             <div class="boton-formulario">
-            <button class="boton-enviar-libro">CONFIRMAR</button>
-            <button class="boton-cancelar-libro">CANCELAR</button>
+            <input type="submit" class="boton-enviar-libro" value="CONFIRMAR">
+            <input type="reset" class="boton-cancelar-libro" value="CANCELAR">
           </div>
           
 
@@ -90,6 +89,66 @@
     <footer>
         <p class="copyright"></p>
     </footer>
-    
+<script type="module" async>
+  
+
+
+
+let botonEnviarLibro = document.querySelector(".boton-enviar-libro");
+
+let inputTitulo = document.querySelector("#input-titulo");
+let inputAutor = document.querySelector("#input-autor");
+let inputXenero = document.querySelector("#input-xenero");
+let inputEditorial = document.querySelector("#input-editorial");
+let inputIsbn = document.querySelector("#input-isbn");
+
+
+
+
+/* botonEnviarLibro.addEventListener("click",()=>{
+  let titulo = inputTitulo.value;
+  let autor = inputAutor.value;
+  let xenero = inputXenero.value;
+  let editorial = inputEditorial.value;
+  let isbn = inputIsbn.value;
+  datos = [titulo,autor,xenero,editorial,isbn];
+  console.log(datos);
+
+}); */
+
+let formNovoLibro = document.querySelector("#form-novo-libro");
+
+
+formNovoLibro.addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  let datos = new FormData(formNovoLibro);
+  let obxectoDato = {};
+  for(let [name,value] of datos){
+    console.log(`${name} = ${value}`)
+    obxectoDato[`${name}`] = value;
+  };
+
+  let datoEnviadoJSON = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(obxectoDato)
+
+  }
+let respostaRecibida = await fetch("/insertar-libro",datoEnviadoJSON);
+let respostaRecibidaJSON = await respostaRecibida.json(); 
+console.log("respostaRecibidaJSON",respostaRecibidaJSON);
+////////
+
+
+
+
+
+
+})
+
+
+</script>
   </body>
 </html>

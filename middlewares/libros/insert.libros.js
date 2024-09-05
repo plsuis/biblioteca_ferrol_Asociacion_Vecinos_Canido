@@ -18,10 +18,10 @@ const insertLibros = async (req,res,next)=>{
             valores:Object.values(req.body),
             interrogacions:"?,?,?,?,?"
         }
-        
+        console.log("req.body",req.body)
         let sentencia = sentenciaSql.insertar(datos.tabla,datos.campos,datos.interrogacions)
         let arrayLibros = await refLibro.executar(sentencia,datos.valores,"insertados")
-        console.log('... ',arrayLibros)
+        console.log('... ',arrayLibros) 
         res.send({
             mensaxe:"insertados"
         })
