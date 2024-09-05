@@ -1,7 +1,7 @@
 // ARQUIVOS DE CABECEIRA
-/* const {
+const {
     datosTablas
-} = require("../datos/varios.js") */
+} = require("../datos/varios.js") 
 // Clase abstracta en javascript
 class Material{
     
@@ -68,7 +68,7 @@ class Libro extends Material{
             Prestamos:'Prestamos',
             Libro_Prestado:'Libro_Prestado'
         }
-        let datosTablas = {
+        /*let datosTablas = {
             campos: {
                 Libro_Prestado: ['ID_Prestamos_Libro_Prestado','Prestado_Libro_Prestado','DNI_Usuario_Libro_Prestado','Codigo_Libros_Libro_Prestado'],
                 Prestamos: ['FechaDesde_Prestamos','FechaHasta_Prestamos','Renovado_Prestamos','Codigo_Libros_Prestamos']
@@ -81,13 +81,13 @@ class Libro extends Material{
                 Libro_Prestado:[],
                 Prestamos:[req.query.fechaDesde,req.query.fechaHasta,0,req.query.codigo] //FechaDesde_Prestamos,FechaHasta_Prestamos,Codigo_Libros_Prestamos
             }
-        }
+        }*/
         let recibidos;
         try{
             //1º Deberemos realizar a inserción na tabla "PRESTAMOS"
-            sentencia = sentenciaSql.insertarLibroPrestado(tablas.Prestamos,datosTablas.campos.Prestamos,datosTablas.interrogacions.Prestamos)
+            sentencia = sentenciaSql.insertarLibroPrestado(datosTablas.tablas.Prestamos,datosTablas.campos.Prestamos,datosTablas.interrogacions.Prestamos)
             //await this.operacions.executar(sentencia,camposTablas,"insertado en Libro_Prestado")
-            await this.executar(sentencia,datosTablas.valores.Prestamos,"insertado en PRESTAMOS")
+            await this.executar(sentencia,datosTablas.valores.Prestamos(req),"insertado en PRESTAMOS")
 
             //2º Deberemos facer unha consulta na tabla 'PRESTAMOS' - SELECT * FROM ${dato.tabla} WHERE ${dato.campo} = ${dato.valor}
             let dato = {
@@ -133,7 +133,7 @@ class Libro extends Material{
          * > id_libro_prestado
          * 
          */
-        let datosTablas = {
+        /*let datosTablas = {
             tablas:{
                 Libro_Prestado:"Libro_Prestado"
             },
@@ -146,14 +146,14 @@ class Libro extends Material{
             valores:{
                 Libro_Prestado:[parseInt(req.query.id_libro_prestado)],
             }
-        }
+        }*/
         let sentencia;
         try{
             console.log("req.params.id_libro_prestado ",req.params,req.params.id_libro_prestado)
             //1º Deberemos realizar a inserción na tabla "PRESTAMOS"
             sentencia = sentenciaSql.actualizarLibroPrestado(datosTablas.tablas.Libro_Prestado,datosTablas.campos.Libro_Prestado)
             console.log("sentencia ",sentencia)
-            let actualizadoLibroPrestado = await this.executar(sentencia,datosTablas.valores.Libro_Prestado,"actualizado Libro_Prestado")
+            let actualizadoLibroPrestado = await this.executar(sentencia,datosTablas.valores.Libro_Prestado_ID(req),"actualizado Libro_Prestado")
             console.log("actualizadoLibroPrestado ", actualizadoLibroPrestado)
             return actualizadoLibroPrestado
         }catch(error){
