@@ -14,7 +14,8 @@ const endpoints = {
         insertar:"/insertar-libro",
         prestar:"/prestar-libro/",
         borrar:"/borro-libro/:ano",
-        leotodos:"/leo-libros"
+        leotodos:"/leo-libros",
+        devolver:"/devolver-libros/"
     },
     usuario:{
         insertar:"/insertar-usuarios",

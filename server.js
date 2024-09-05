@@ -16,7 +16,8 @@ app.use(express.static(path.join(__dirname,"public")))
 const {
     readLibros,
     insertLibros,
-    prestarLibros
+    prestarLibros,
+    devolverLibros
 } = require("./middlewares/libros/index.js");
 const {
     readUsuarios,
@@ -51,7 +52,7 @@ app.post(endpoints.libros.prestar,prestarLibros)
 app.post(endpoints.usuario.insertar,insertUsuarios)
 
 //------------------------ PUTS
-
+app.put(endpoints.libros.devolver,devolverLibros)
 //------------------------ DELETES
 
 
