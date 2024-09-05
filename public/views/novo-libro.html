@@ -22,6 +22,7 @@
       <div class="logo-xestion"><img src="../imaxes/av_canido_logo.png"></div>
 
   </header>
+  
     <!------------------------------------------------------->
     <!------------------------   MAIN   --------------------->
     <!------------------------------------------------------->
@@ -33,15 +34,15 @@
           <form id="form-novo-libro">
             <div>
             <label>Título<span class="asterisco"> *</span></label>
-            <input id="input-titulo" type="text" required/>
+            <input id="input-titulo" name="titulo" type="text" required/>
             </div>
             <div>
             <label>Autor<span class="asterisco"> *</span></label>
-            <input id="input-autor" type="text" required/>
+            <input id="input-autor" name="autor" type="text" required/>
             </div>
             <div>
             <label>Xénero<span class="asterisco"> *</span></label>
-            <select id="input-xenero" required>
+            <select id="input-xenero" name="xenero" required>
               <option>--Sen Especificar--</option>
               <option>Literatura Internacional</option>
               <option>Literatura Sudamericana</option>
@@ -66,15 +67,16 @@
           </div>
             <div>
             <label>Editorial<span class="asterisco"> *</span></label>
-            <input id="input-editorial" type="text" required/>
+            <input id="input-editorial" name="editorial" type="text" required/>
           </div>
 
             <div>
             <label>ISBN (sin espacios)<span class="asterisco"> *</span></label>
-            <input id="input-isbn" type="number" required/>
+            <input id="input-isbn" name="isbn" type="number" required/>
           </div>
             <div class="boton-formulario">
-            <button class="boton-enviar-libro">CONFIRMAR</button>
+              <input type="submit" id="envio" value="Enviar"/>
+            <!-- <button class="boton-enviar-libro">CONFIRMAR</button> -->
             <button class="boton-cancelar-libro">CANCELAR</button>
           </div>
           
@@ -90,6 +92,53 @@
     <footer>
         <p class="copyright"></p>
     </footer>
-    
+    <script>
+      let outroEnvio = document.querySelector("#outroenvio")
+      let refFormDatas = document.querySelector("#form-novo-libro")
+      let inputEnvio = document.querySelector("#envio")
+      outroEnvio.addEventListener("click",async ()=>{
+        let obxetoDato = {
+          libro:"dato1",
+          nome:"dato2"
+        }
+        let obxetoEnvio2 = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(obxetoDato)
+        }
+        let respotaRecibida = await fetch("/insertar-libro",obxetoEnvio2);
+        let respotaRecibidaJSON = await respotaRecibida.json();
+
+        console.log("respotaRecibidaJSON ",respotaRecibidaJSON)
+      })
+      inputEnvio.addEventListener("click",async (e)=>{
+        e.preventDefault()
+        console.log("hola")
+        let datos = new FormData(refFormDatas)
+        let obxetoDato = {}
+        for(let [name,value] of datos){
+          console.log("datos name ",name,"valores ",value)
+          obxetoDato[`${name}`] = value;
+        }
+        console.log("obxetoDato ",obxetoDato)
+        let obxetoEnvio = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(obxetoDato)
+        }
+
+        
+
+        let respotaRecibida = await fetch("/insertar-libro",obxetoEnvio);
+        let respotaRecibidaJSON = await respotaRecibida.json();
+
+        console.log("respotaRecibidaJSON ",respotaRecibidaJSON)
+
+      })
+    </script>
   </body>
 </html>
