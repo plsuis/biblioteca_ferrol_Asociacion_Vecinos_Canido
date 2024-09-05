@@ -145,6 +145,18 @@ class Libro extends Material{
         /**
          * Borro da táboa Libro co codigo
          */
+        let sentencia;
+        try{
+            console.log("req.params.codigo ",req.params,req.params.codigo)
+            //1º Deberemos realizar a inserción na tabla "PRESTAMOS"
+            sentencia = sentenciaSql.borrar(datosTablas.tablas.Libros,datosTablas.campos.Libros[2])
+            console.log("sentencia ",sentencia)
+            let borradoLibro = await this.executar(sentencia,datosTablas.valores.Libro_Borrar(req),"libro borrado da táboa Libro")
+            console.log("borradoLibro ", borradoLibro)
+            return borradoLibro
+        }catch(error){
+            console.error("error devolvendo libros",error)
+        }
     }
 }
 

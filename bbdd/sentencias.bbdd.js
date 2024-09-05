@@ -13,8 +13,8 @@ let sentenciaSql ={
     selecionarTablaWhere: function(dato){
         return `SELECT * FROM ${dato.tabla} WHERE ${dato.campo} = '${dato.valor}'`;
     },
-    borrar : function (dato){
-        return `DELETE FROM ${dato.tabla} WHERE ${dato.campo} = ${dato.valor}`;
+    borrar : function (tabla,campo){
+        return `DELETE FROM ${tabla} WHERE ${campo} = ?`;
     },
     actualizarLibroPrestado: function(tabla,campos){
         return `UPDATE ${tabla} SET ${campos[1]} = 0 WHERE ${campos[0]} = ?`

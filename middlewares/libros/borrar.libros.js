@@ -12,10 +12,10 @@ const borrarLibros = async (req,res,next)=>{
         
         const refLibro = new Libro(refBBDD);//si 
         
-        let mensaxeDeLibro = await refLibro.devolver(req,sentenciaSql)
+        let mensaxeDeLibro = await refLibro.borrar(req,sentenciaSql)
         console.log("mensaxeDeLibro ",mensaxeDeLibro)
         res.send({
-            mensaxe:"libros prestados actualizados"
+            mensaxe:"libros borrados actualizados"
         })
         
 

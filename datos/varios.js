@@ -27,9 +27,11 @@ const endpoints = {
 let datosTablas = {
     tablas:{
         Prestamos:'Prestamos',
-        Libro_Prestado:"Libro_Prestado"
+        Libro_Prestado:"Libro_Prestado",
+        Libros:'Libros'
     },
     campos: {
+        Libros:['Titulo_Libros','Autor_Libros','Codigo_Libros','Editorial_Libros','Anho_edicion_Libros','Xenero_Libros'],
         Libro_Prestado: ['ID_Prestamos_Libro_Prestado','Prestado_Libro_Prestado','DNI_Usuario_Libro_Prestado','Codigo_Libros_Libro_Prestado'],
         Prestamos: ['FechaDesde_Prestamos','FechaHasta_Prestamos','Renovado_Prestamos','Codigo_Libros_Prestamos']
     },
@@ -41,6 +43,9 @@ let datosTablas = {
         Libro_Prestado:[],
         Libro_Prestado_ID: function(req){
             return [parseInt(req.query.id_libro_prestado)]
+        },
+        Libro_Borrar:function(req){
+            return [req.query.codigo]
         },
         Prestamos:function (req){
             return [req.query.fechaDesde,req.query.fechaHasta,0,req.query.codigo] //FechaDesde_Prestamos,FechaHasta_Prestamos,Codigo_Libros_Prestamos
