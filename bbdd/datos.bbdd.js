@@ -34,6 +34,7 @@ const baseDatosASV = `
                 Codigo_Libros						 TEXT NOT NULL,
                 Editorial_Libros					 TEXT NOT NULL,
                 Anho_edicion_Libros				 TEXT NOT NULL,
+                Xenero_Libros				      TEXT NOT NULL,
                 
                 PRIMARY KEY (Codigo_Libros)
                 );
