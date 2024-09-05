@@ -22,7 +22,8 @@ const {
 } = require("./middlewares/libros/index.js");
 const {
     readUsuarios,
-    insertUsuarios
+    insertUsuarios,
+    borrarUsuarios
 } = require("./middlewares/usuarios/index.js")
 // END-POINTS
 
@@ -61,6 +62,9 @@ app.put(endpoints.libros.devolver,devolverLibros)
 
 //libros
 app.delete(endpoints.libros.borrar,borrarLibros)
+
+//usuarios
+app.delete(endpoints.usuario.borrar,borrarUsuarios)
 
 // LISTEN SERVER
 app.listen(3000, function () {

@@ -20,7 +20,7 @@ const endpoints = {
     usuario:{
         insertar:"/insertar-usuarios",
         actualizar:"/actualizar-usuarios",
-        borrar:"/borro-usuario/:id",
+        borrar:"/borro-usuario/",
         leotodos:"/leo-usuarios",
     }
 }
