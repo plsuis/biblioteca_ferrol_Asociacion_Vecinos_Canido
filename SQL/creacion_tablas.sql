@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS Libros
   Autor_Libros                    TEXT NOT NULL,
   ISBN_Libros                     TEXT NOT NULL,
   Editorial_Libros					      TEXT NOT NULL,
-  Xenero_Libros				      TEXT NOT NULL,
+  Anho_edicion_Libros				      TEXT NOT NULL,
   
   PRIMARY KEY (ISBN_Libros)
 );

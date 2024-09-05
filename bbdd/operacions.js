@@ -1,22 +1,8 @@
-const { baseDatosASV} = require('./datos.bbdd.js');
-
 class BBDD{
     constructor(bbdd){
         this.db = bbdd;
     }
-    creoBaseDatos(){
-        return new Promise((resolve, reject) => {
-            this.db.exec(baseDatosASV,(err) => {
-                if (err) {
-                    reject(err.message);
-                } else {
-                    resolve("Tablas creadas con éxito.");
-                }
-            })
-            
-        })
-        
-    }
+  
 
     // AGREGO O MÉTODO
     executar(sentenciaSql,valores,mensaxe){

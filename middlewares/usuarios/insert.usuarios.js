@@ -1,10 +1,8 @@
 const { sentenciaSql } = require("../../bbdd/sentencias.bbdd.js");
-const { isErroOpenBBDD } = require('../../bbdd/helpers.bbdd.js');
 const { refBBDD } = require('../helpers.middlewares.js');
 
 const insertUsuarios = async (req,res,next)=>{
-   
-    await isErroOpenBBDD(refBBDD);
+
     try {
         let datos = {
             tabla:"Usuario",

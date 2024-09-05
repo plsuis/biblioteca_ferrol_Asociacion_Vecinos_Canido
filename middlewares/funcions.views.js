@@ -28,12 +28,6 @@ const paxinaInicioAdmin = (req, res) => {
     res.sendFile("./views/inicio-admin.html", optionsRuta);
 };
 
-const paxinaNovoUsuario = (req, res) => {
-    const optionsRuta = {
-        root: path.join(__dirname, "../public"),
-    };
-    res.sendFile("./views/crear-usuario.html", optionsRuta);
-};
 
 const paxinaBiblioteca = (req, res) => {
     const optionsRuta = {
@@ -68,6 +62,5 @@ module.exports = {
     paxinaBiblioteca,
     paxinaPrestamos,
     paxinaNovoLibro,
-    paxinaNovoPrestamo,
-    paxinaNovoUsuario
+    paxinaNovoPrestamo
 }

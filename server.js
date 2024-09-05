@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 
-const { paxinaBiblioteca, paxinaPrestamos, paxinaNovoLibro, paxinaNovoPrestamo, paxinaBibliotecaSenUsuario, paxinaLogueoAdmin, paxinaInicioAdmin, paxinaNovoUsuario } = require("./middlewares/funcions.views");
+const { paxinaBiblioteca, paxinaPrestamos, paxinaNovoLibro, paxinaNovoPrestamo, paxinaBibliotecaSenUsuario, paxinaLogueoAdmin, paxinaInicioAdmin } = require("./middlewares/funcions.views");
 const { endpoints } = require("./datos/varios.js");
 
 const app = express();
@@ -15,7 +15,9 @@ app.use(express.static(path.join(__dirname,"public")))
 // MIDDLEWARES
 const {
     readLibros,
-    insertLibros
+    insertLibros,
+    prestarLibros,
+    devolverLibros
 } = require("./middlewares/libros/index.js");
 const {
     readUsuarios,
@@ -28,10 +30,10 @@ app.get(endpoints.paxinas.logueo, paxinaLogueoAdmin); // login-admin.html
 app.get(endpoints.paxinas.inicioAdmin, paxinaInicioAdmin); // inicio-admin.html
 app.get(endpoints.xestion.bibliotecaAdmin, paxinaBiblioteca); // biblioteca-admin.html
 app.get(endpoints.xestion.prestamos, paxinaPrestamos); // prestamos-admin.html
-app.get(endpoints.xestion.usuarios, paxinaNovoUsuario); // crear-usuario.html
 app.get(endpoints.paxinas.formularioLibro, paxinaNovoLibro); // novo-libro.html
 app.get(endpoints.paxinas.formularioPrestamo, paxinaNovoPrestamo)//novo-prestamo.html
-// GETTERS
+
+//------------------------ GETTERS
 // libros
 
 app.get(endpoints.libros.leotodos,readLibros)
@@ -41,13 +43,17 @@ app.get(endpoints.libros.leotodos,readLibros)
 
 app.get(endpoints.usuario.leotodos,readUsuarios)
 
-// POST
+//------------------------ POST
 
+// libros
 app.post(endpoints.libros.insertar,insertLibros);
+app.post(endpoints.libros.prestar,prestarLibros)
+// usuarios
 app.post(endpoints.usuario.insertar,insertUsuarios)
-// PUTS
 
-// DELETES
+//------------------------ PUTS
+app.put(endpoints.libros.devolver,devolverLibros)
+//------------------------ DELETES
 
 
 // LISTEN SERVER
