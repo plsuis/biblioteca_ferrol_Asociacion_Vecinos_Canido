@@ -17,7 +17,8 @@ const {
     readLibros,
     insertLibros,
     prestarLibros,
-    devolverLibros
+    devolverLibros,
+    borrarLibros
 } = require("./middlewares/libros/index.js");
 const {
     readUsuarios,
@@ -52,9 +53,14 @@ app.post(endpoints.libros.prestar,prestarLibros)
 app.post(endpoints.usuario.insertar,insertUsuarios)
 
 //------------------------ PUTS
+
+//libros
 app.put(endpoints.libros.devolver,devolverLibros)
+
 //------------------------ DELETES
 
+//libros
+app.delete(endpoints.libros.borrar,borrarLibros)
 
 // LISTEN SERVER
 app.listen(3000, function () {

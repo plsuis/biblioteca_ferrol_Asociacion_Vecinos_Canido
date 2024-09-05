@@ -13,7 +13,7 @@ const endpoints = {
     libros:{
         insertar:"/insertar-libro",
         prestar:"/prestar-libro/",
-        borrar:"/borro-libro/:ano",
+        borrar:"/borro-libro/",
         leotodos:"/leo-libros",
         devolver:"/devolver-libros/"
     },

@@ -1,3 +1,4 @@
+const borrarLibros = require("./borrar.libros.js");
 const devolverLibros = require("./devolver.libros.js");
 const insertLibros = require("./insert.libros.js");
 const prestarLibros = require("./prestar.libros.js");
@@ -7,5 +8,6 @@ module.exports = {
     readLibros,
     insertLibros,
     prestarLibros,
-    devolverLibros
+    devolverLibros,
+    borrarLibros
 }

@@ -18,10 +18,13 @@ class Material{
         throw new TypeError("non podes instanciar este método")
     }
 
-    prestar(){
+    async prestar(){
         throw new TypeError("non podes instanciar este método")
     }
-    devolver(){
+    async devolver(){
+        throw new TypeError("non podes instanciar este método")
+    }
+    async borrar(){
         throw new TypeError("non podes instanciar este método")
     }
 }
@@ -138,6 +141,11 @@ class Libro extends Material{
 
     }
     
+    async borrar(req,sentenciaSql){
+        /**
+         * Borro da táboa Libro co codigo
+         */
+    }
 }
 
 class Usuario{
