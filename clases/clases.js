@@ -168,7 +168,7 @@ class Usuario{
     dni;
     rol = 'socio';
     campos;
-    constructor(campos){
+    constructor(campos = ''){
         this.campos = campos;
         this.usuario = campos.usuario;
         this.apelido1 = campos.apelido1;
@@ -176,9 +176,16 @@ class Usuario{
         this.dni = campos.dni;
     }
 
+    set novoDniUsuario(dni){
+        this.dni = dni;
+    }
+    get dniUsuario(){
+        return this.dni;
+    }
+
     get datosUsuario(){
         this.campos.rol = this.rol;
-        return this.campos;
+        return [this.campos];
     }
 
     set actualizoUsuario(novoscampos){
@@ -186,8 +193,24 @@ class Usuario{
     }
 }
 
+class AccionsUsuarioBBDD{
+    constructor(bbdd){
+        this.bbdd = bbdd;
+    }
+
+    async borrar(tabla,campo,valores){
+        let sentencia = `DELETE FROM ${tabla} WHERE ${campo} = ?`;
+        this.bbdd.executar(sentencia,valores,"borrado usuario")
+    }
+
+    async actualizar(tabla,campo,valores){
+        let sentencia = `UPDATE ${tabla} SET ${campo.nome} = ? ,${campo.apelido1} = ? ,${campo.apelido2} = ? ,${campo.dni} = ? ,${campo.rol} = ? WHERE ${campo.dni} = ?`;
+        this.bbdd.executar(sentencia,valores,"actualizado usuario")
+    }
+}
 module.exports = {
     Libro,
-    Usuario
+    Usuario,
+    AccionsUsuarioBBDD
 }
 

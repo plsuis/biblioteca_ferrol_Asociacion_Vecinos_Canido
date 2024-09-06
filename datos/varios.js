@@ -27,11 +27,13 @@ const endpoints = {
 }
 let datosTablas = {
     tablas:{
+        Usuario:'Usuario',
         Prestamos:'Prestamos',
         Libro_Prestado:"Libro_Prestado",
         Libros:'Libros'
     },
     campos: {
+        Usuario:['Nome_Usuario','Apelido_1_Usuario','Apelido_2_Usuario','DNI_Usuario','ROL_Usuario'],
         Libros:['Titulo_Libros','Autor_Libros','Codigo_Libros','Editorial_Libros','Anho_edicion_Libros','Xenero_Libros'],
         Libro_Prestado: ['ID_Prestamos_Libro_Prestado','Prestado_Libro_Prestado','DNI_Usuario_Libro_Prestado','Codigo_Libros_Libro_Prestado'],
         Prestamos: ['FechaDesde_Prestamos','FechaHasta_Prestamos','Renovado_Prestamos','Codigo_Libros_Prestamos']
