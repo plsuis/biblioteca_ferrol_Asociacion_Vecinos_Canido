@@ -28,21 +28,20 @@
     <!------------------------------------------------------->
     <!------------------------   MAIN   --------------------->
     <!------------------------------------------------------->
+    <a href="/administracion">Entrar como admin</a>
     <section class="pax-inicio-sesion">
       <div class="formulario">
-        <div id="form-inicio-sesion">
-          
+        <form id="form-inicio-sesion">
           <div>
-            <input id="usuario" type="text">
+            <input id="usuario" type="text" name="nome_usuario">
           </div>
           <div>
-            <input id="contrasinal" type="password">
+            <input id="contrasinal" type="password" name="contrasinal_usuario">
             <img class="ollo" src="../imaxes/eye.svg">
           </div>
-          <button id="boton-confirmar-usuario">ENTRAR</button>
+          <button type="submit" id="boton-confirmar-usuario">ENTRAR</button>
           <p class="condicion-usuario"></p>
-          
-        </div>
+        </form>
       </div>
     </section>
     <p>(TEMPORAL)Usuario: Administrador</p><p>Constrasinal: Canid0</p>
