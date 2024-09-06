@@ -4,7 +4,7 @@ const isErro = (err) => {
                 }
                 console.log("conectado ...");
             }
-const isErroOpenBBDD = async (refBBDD)=>{
+ const isErroOpenBBDD = async (refBBDD)=>{
     try {
         let devoltoDaCreacion = await refBBDD.creoBaseDatos();//si
         console.log("Base de datos y tablas creadas.",devoltoDaCreacion);
@@ -12,7 +12,7 @@ const isErroOpenBBDD = async (refBBDD)=>{
         console.error("Error creando la base de datos: ", error);
         return; // Termina si hay un error
     }
-}
+} 
 module.exports = {
     isErro,
     isErroOpenBBDD

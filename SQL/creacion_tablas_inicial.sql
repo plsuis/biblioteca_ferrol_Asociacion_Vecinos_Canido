@@ -1,31 +1,3 @@
-const sqlite3 = require('sqlite3').verbose();
-const { isErro } = require('./helpers.bbdd.js');
-let arquivosBaseDatos = {
-    ficheiro: './ficheiro/basedatos.fichero',
-    base2: './base2.db',
-    base1: './base1.db',
-    nomefich:'basedatos.fichero',
-    nomefichBBDD:'outraBBDD.db'
-}
-let unhabbdd = new sqlite3.Database(arquivosBaseDatos.nomefich,sqlite3.OPEN_READWRITE,isErro);
-
-let outrabbdd = (ruta)=>{
-    return new sqlite3.Database(ruta,sqlite3.OPEN_READWRITE,isErro);
-
-}
-const tablaLibros = `CREATE TABLE IF NOT EXISTS Libros
-                (
-    
-                Titulo_Libros						 TEXT NOT NULL,
-                Autor_Libros						 TEXT NOT NULL,
-                Codigo_Libros						 TEXT NOT NULL,
-                Editorial_Libros					 TEXT NOT NULL,
-                Anho_edicion_Libros				 TEXT NOT NULL,
-                
-                PRIMARY KEY (Codigo_Libros)
-                );`;
-
-const baseDatosASV = `           
                 CREATE TABLE IF NOT EXISTS Libros
                 (
     
@@ -34,7 +6,6 @@ const baseDatosASV = `
                 Codigo_Libros						 TEXT NOT NULL,
                 Editorial_Libros					 TEXT NOT NULL,
                 Anho_edicion_Libros				 TEXT NOT NULL,
-                Xenero_Libros				      TEXT NOT NULL,
                 
                 PRIMARY KEY (Codigo_Libros)
                 );
@@ -85,12 +56,3 @@ const baseDatosASV = `
                 
                 FOREIGN KEY (DNI_Usuario_Multas) REFERENCES Usuario(DNI_Usuario) ON UPDATE CASCADE ON DELETE CASCADE
                 );
-            `;
-
-module.exports = {
-    tablaLibros,
-    baseDatosASV,
-    arquivosBaseDatos,
-    unhabbdd,
-    outrabbdd
-}

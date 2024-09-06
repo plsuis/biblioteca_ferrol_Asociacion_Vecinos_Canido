@@ -4,18 +4,18 @@ const { Libro } = require("../../clases/clases.js");
 //const { isErroOpenBBDD } = require('../../bbdd/helpers.bbdd.js');
 const { refBBDD } = require('../helpers.middlewares.js');
 
-const readLibros = async (req,res,next)=>{
+const borrarLibros = async (req,res,next)=>{
   
     //await isErroOpenBBDD(refBBDD);
-    const operacionBBDD2 = new OperacionsBBDD2(refBBDD.baseDeDatos)
+    //const operacionBBDD2 = new OperacionsBBDD2(refBBDD.baseDeDatos)
     try {
         
-        const refLibro = new Libro(operacionBBDD2);//si 
-        let sentencia = sentenciaSql.selecionarTabla("Libros")
-        let arrayLibros = await refLibro.lista(sentencia)
-        console.log('... ',arrayLibros)
+        const refLibro = new Libro(refBBDD);//si 
+        
+        let mensaxeDeLibro = await refLibro.borrar(req,sentenciaSql)
+        console.log("mensaxeDeLibro ",mensaxeDeLibro)
         res.send({
-            lista:arrayLibros
+            mensaxe:"libros borrados actualizados"
         })
         
 
@@ -26,5 +26,4 @@ const readLibros = async (req,res,next)=>{
    
    
 }
-//readLibros()
-module.exports = readLibros
+module.exports = borrarLibros
