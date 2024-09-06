@@ -202,6 +202,11 @@ class AccionsUsuarioBBDD{
         let sentencia = `DELETE FROM ${tabla} WHERE ${campo} = ?`;
         this.bbdd.executar(sentencia,valores,"borrado usuario")
     }
+
+    async actualizar(tabla,campo,valores){
+        let sentencia = `UPDATE ${tabla} SET ${campo.nome} = ? ,${campo.apelido1} = ? ,${campo.apelido2} = ? ,${campo.dni} = ? ,${campo.rol} = ? WHERE ${campo.dni} = ?`;
+        this.bbdd.executar(sentencia,valores,"actualizado usuario")
+    }
 }
 module.exports = {
     Libro,

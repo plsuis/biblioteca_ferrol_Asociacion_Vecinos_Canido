@@ -23,7 +23,8 @@ const {
 const {
     readUsuarios,
     insertUsuarios,
-    borrarUsuarios
+    borrarUsuarios,
+    actualizarUsuarios
 } = require("./middlewares/usuarios/index.js")
 // END-POINTS
 
@@ -57,6 +58,9 @@ app.post(endpoints.usuario.insertar,insertUsuarios)
 
 //libros
 app.put(endpoints.libros.devolver,devolverLibros)
+
+//usuarios
+app.put(endpoints.usuario.actualizar,actualizarUsuarios)
 
 //------------------------ DELETES
 
