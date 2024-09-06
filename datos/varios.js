@@ -1,6 +1,7 @@
 const endpoints = {
     xestion: {
         bibliotecaAdmin: "/xestion-biblioteca",
+        usuarios:"/xestion-usuarios",
         prestamos:"/xestion-prestamos"
     },
     paxinas: {
