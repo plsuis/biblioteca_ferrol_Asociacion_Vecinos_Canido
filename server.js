@@ -24,7 +24,8 @@ const {
     readUsuarios,
     insertUsuarios,
     borrarUsuarios
-} = require("./middlewares/usuarios/index.js")
+} = require("./middlewares/usuarios/index.js");
+const { logueo } = require("./middlewares/helpers.middlewares.js");
 // END-POINTS
 
 app.get(endpoints.paxinas.bibliotecaSenUsuario, paxinaBibliotecaSenUsuario); // biblioteca.html
@@ -37,6 +38,10 @@ app.get(endpoints.paxinas.formularioLibro, paxinaNovoLibro); // novo-libro.html
 app.get(endpoints.paxinas.formularioPrestamo, paxinaNovoPrestamo)//novo-prestamo.html
 
 //------------------------ GETTERS
+app.post(endpoints.paxinas.logueo, logueo);
+
+
+
 // libros
 
 app.get(endpoints.libros.leotodos,readLibros)

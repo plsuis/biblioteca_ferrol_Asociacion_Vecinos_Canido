@@ -8,7 +8,7 @@
     <link href="../CSS/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href="../imaxes/av_canido_favicon.png" />
     <script type="module" async src="../JavaScript/copyright-auto.js"></script>
-    <script type="module" async src="../JavaScript/chave-login-IF.js"></script>
+   <!--  <script type="module" async src="../JavaScript/chave-login-IF.js"></script> -->
 
     <!--FONTS = Comfortaa | Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,10 +33,10 @@
       <div class="formulario">
         <form id="form-inicio-sesion">
           <div>
-            <input id="usuario" type="text" name="nome_usuario">
+            <input id="usuario" type="text" name="Nome_Usuario">
           </div>
           <div>
-            <input id="contrasinal" type="password" name="contrasinal_usuario">
+            <input id="contrasinal" type="password" name="DNI_Usuario">
             <img class="ollo" src="../imaxes/eye.svg">
           </div>
           <button type="submit" id="boton-confirmar-usuario">ENTRAR</button>
@@ -51,5 +51,73 @@
     <footer>
         <p class="copyright"></p>
     </footer>
+    <script>
+
+const ollo = document.querySelector(".ollo");
+
+
+
+function verContrasinal() {
+        
+    if (contrasinal.type === "password") {
+          contrasinal.type = "text";
+          ollo.src = "../imaxes/eye-closed.svg";
+    } else {
+          contrasinal.type = "password";
+          ollo.src = "../imaxes/eye.svg";
+    }
+};
+
+ollo.addEventListener("click", async () => {
+    verContrasinal();
+});
+
+
+
+
+const formulario = document.querySelector("#form-inicio-sesion");
+
+formulario.addEventListener("submit", async (e) => {
+  e.preventDefault(); // 1. OBLIGATORIO
+  // DEVOLVE UN OBXETO ESPECIAL
+  let formData = new FormData(formulario); // 2. OBLIGATORIO
+  console.log("o formData ", formData);
+
+  let valores = formData.entries(); // 3. OBLIGATORIO
+  const formJson = Object.fromEntries(valores); // 4. OBLIGATORIO
+  console.log(formJson);
+  let obxetoEnvio = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formJson),
+  };
+
+  let respostaLogueo = await fetch("/iniciar-sesion", obxetoEnvio);
+
+  let contestacionRecibida = await respostaLogueo.json();
+  console.log("resposta ", contestacionRecibida);
+  // COMPROBAMOS A RESPOSTA DO SERVIDOR
+  if (contestacionRecibida.estado == "ok") {
+    location.replace("/administracion"); // 'sustitue a URL a partir server '/' creando un endpoint GET'
+
+    localStorage.setItem("usuario", JSON.stringify(contestacionRecibida));
+    let menxaxeRecibida = JSON.parse(localStorage.getItem("usuario"));
+    console.log(menxaxeRecibida);
+  } else {
+    var condicionUsuario = document.querySelector(".condicion-usuario");
+    condicionUsuario.innerHTML = "A información non é correcta";
+  }
+});
+
+
+
+
+
+
+
+
+    </script>
   </body>
 </html>
