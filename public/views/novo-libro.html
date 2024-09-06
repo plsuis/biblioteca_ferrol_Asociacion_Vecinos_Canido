@@ -68,7 +68,10 @@
             <label>Editorial<span class="asterisco"> *</span></label>
             <input id="input-editorial" type="text" name="Editorial_Libros" required/>
           </div>
-
+          <div>
+            <label>Ano de Edición<span class="asterisco"> *</span></label>
+            <input id="input-ano-libro" type="text" name="Anho_edicion_Libros" required/>
+          </div>
             <div>
             <label>ISBN (sin espacios)<span class="asterisco"> *</span></label>
             <input id="input-isbn" type="text" name="Codigo_Libros" required/>
@@ -103,19 +106,6 @@ let inputXenero = document.querySelector("#input-xenero");
 let inputEditorial = document.querySelector("#input-editorial");
 let inputIsbn = document.querySelector("#input-isbn");
 
-
-
-
-/* botonEnviarLibro.addEventListener("click",()=>{
-  let titulo = inputTitulo.value;
-  let autor = inputAutor.value;
-  let xenero = inputXenero.value;
-  let editorial = inputEditorial.value;
-  let isbn = inputIsbn.value;
-  datos = [titulo,autor,xenero,editorial,isbn];
-  console.log(datos);
-
-}); */
 
 let formNovoLibro = document.querySelector("#form-novo-libro");
 
