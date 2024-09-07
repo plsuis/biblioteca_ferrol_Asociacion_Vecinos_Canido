@@ -16,7 +16,7 @@ const insertLibros = async (req,res,next)=>{
             tabla:"Libros",
             campos:Object.keys(req.body),
             valores:Object.values(req.body),
-            interrogacions:"?,?,?,?,?"
+            interrogacions:"?,?,?,?,?,?"
         }
         
         let sentencia = sentenciaSql.insertar(datos.tabla,datos.campos,datos.interrogacions)
