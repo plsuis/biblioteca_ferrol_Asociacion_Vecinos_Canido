@@ -18,7 +18,9 @@ const {
     insertLibros,
     prestarLibros,
     devolverLibros,
-    borrarLibros
+    borrarLibros,
+    actualizarLibros,
+    buscarLibros
 } = require("./middlewares/libros/index.js");
 const {
     readUsuarios,
@@ -40,7 +42,7 @@ app.get(endpoints.paxinas.formularioPrestamo, paxinaNovoPrestamo)//novo-prestamo
 // libros
 
 app.get(endpoints.libros.leotodos,readLibros)
-
+app.get(endpoints.libros.buscar,buscarLibros)
 
 // usuarios
 
@@ -58,7 +60,7 @@ app.post(endpoints.usuario.insertar,insertUsuarios)
 
 //libros
 app.put(endpoints.libros.devolver,devolverLibros)
-
+app.put(endpoints.libros.actualizar,actualizarLibros)
 //usuarios
 app.put(endpoints.usuario.actualizar,actualizarUsuarios)
 
