@@ -5,7 +5,7 @@ const { datosTablas } = require("../../datos/varios.js");
 //const { isErroOpenBBDD } = require('../../bbdd/helpers.bbdd.js');
 const { refBBDD } = require('../helpers.middlewares.js');
 
-const modificarUsuarios = async (req,res,next)=>{
+const actualizarUsuarios = async (req,res,next)=>{
   
     //await isErroOpenBBDD(refBBDD);
     //const operacionBBDD2 = new OperacionsBBDD2(refBBDD.baseDeDatos)
@@ -35,4 +35,4 @@ const modificarUsuarios = async (req,res,next)=>{
    
    
 }
-module.exports = modificarUsuarios
+module.exports = actualizarUsuarios
