@@ -192,7 +192,21 @@ class Usuario{
         this.campos = novoscampos;
     }
 }
+class AccionsLibroBBDD{
+    constructor(bbdd){
+        this.bbdd = bbdd;
+    }
+    async actualizar(tabla,campo,valores){
+        let sentencia = `UPDATE ${tabla} SET ${campo.titulo} = ? ,${campo.autor} = ? ,${campo.codigo} = ? ,${campo.editorial} = ? ,${campo.ano} = ?,${campo.xenero} = ? WHERE ${campo.codigo} = ?`;
+        this.bbdd.executar(sentencia,valores,"actualizado usuario")
+    }
 
+    async buscar(tabla,campo,valores){
+        let sentencia = `SELECT * FROM ${tabla} WHERE ${campo.titulo} LIKE ${valores}`;
+        console.log(sentencia)
+        return this.bbdd.consultarValores(sentencia,valores,"libro buscado")
+    }
+}
 class AccionsUsuarioBBDD{
     constructor(bbdd){
         this.bbdd = bbdd;
@@ -211,6 +225,7 @@ class AccionsUsuarioBBDD{
 module.exports = {
     Libro,
     Usuario,
-    AccionsUsuarioBBDD
+    AccionsUsuarioBBDD,
+    AccionsLibroBBDD
 }
 
