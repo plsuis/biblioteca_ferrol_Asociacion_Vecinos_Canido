@@ -27,7 +27,8 @@ const {
     insertUsuarios,
     borrarUsuarios,
     actualizarUsuarios
-} = require("./middlewares/usuarios/index.js")
+} = require("./middlewares/usuarios/index.js");
+const { logueo } = require("./middlewares/helpers.middlewares.js");
 // END-POINTS
 
 app.get(endpoints.paxinas.bibliotecaSenUsuario, paxinaBibliotecaSenUsuario); // biblioteca.html
