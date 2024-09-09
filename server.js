@@ -41,7 +41,7 @@ app.get(endpoints.paxinas.formularioLibro, paxinaNovoLibro); // novo-libro.html
 app.get(endpoints.paxinas.formularioPrestamo, paxinaNovoPrestamo)//novo-prestamo.html
 
 //------------------------ GETTERS
-app.post(endpoints.paxinas.logueo, logueo);
+//app.post(endpoints.paxinas.logueo, logueo);
 
 
 
