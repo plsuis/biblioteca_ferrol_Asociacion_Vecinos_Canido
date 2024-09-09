@@ -28,6 +28,19 @@ class BBDD{
         });
     }
 
+    consultarValores(sqlConsulta,valores) {
+        return new Promise((resolve, reject) => {
+            
+            this.db.all(sqlConsulta, (error, rows) => {
+                if (error) {
+                    reject("Error al consultar: " + error.message);
+                } else {
+                    resolve(rows);
+                }
+            });
+        });
+    }
+
     get baseDeDatos(){
         return this.db;
     }

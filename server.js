@@ -18,14 +18,16 @@ const {
     insertLibros,
     prestarLibros,
     devolverLibros,
-    borrarLibros
+    borrarLibros,
+    actualizarLibros,
+    buscarLibros
 } = require("./middlewares/libros/index.js");
 const {
     readUsuarios,
     insertUsuarios,
-    borrarUsuarios
-} = require("./middlewares/usuarios/index.js");
-const { logueo } = require("./middlewares/helpers.middlewares.js");
+    borrarUsuarios,
+    actualizarUsuarios
+} = require("./middlewares/usuarios/index.js")
 // END-POINTS
 
 app.get(endpoints.paxinas.bibliotecaSenUsuario, paxinaBibliotecaSenUsuario); // biblioteca.html
@@ -45,7 +47,7 @@ app.post(endpoints.paxinas.logueo, logueo);
 // libros
 
 app.get(endpoints.libros.leotodos,readLibros)
-
+app.get(endpoints.libros.buscar,buscarLibros)
 
 // usuarios
 
@@ -63,6 +65,9 @@ app.post(endpoints.usuario.insertar,insertUsuarios)
 
 //libros
 app.put(endpoints.libros.devolver,devolverLibros)
+app.put(endpoints.libros.actualizar,actualizarLibros)
+//usuarios
+app.put(endpoints.usuario.actualizar,actualizarUsuarios)
 
 //------------------------ DELETES
 
