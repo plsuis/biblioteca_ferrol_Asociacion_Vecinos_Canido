@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 
-const { paxinaBiblioteca, paxinaPrestamos, paxinaNovoLibro, paxinaNovoPrestamo, paxinaBibliotecaSenUsuario, paxinaLogueoAdmin, paxinaInicioAdmin } = require("./middlewares/funcions.views");
+const { paxinaBiblioteca, paxinaPrestamos, paxinaNovoLibro, paxinaNovoPrestamo, paxinaBibliotecaSenUsuario, paxinaLogueoAdmin, paxinaInicioAdmin, paxinaNovoUsuario } = require("./middlewares/funcions.views");
 const { endpoints } = require("./datos/varios.js");
 
 const app = express();
@@ -34,11 +34,16 @@ app.get(endpoints.paxinas.bibliotecaSenUsuario, paxinaBibliotecaSenUsuario); // 
 app.get(endpoints.paxinas.logueo, paxinaLogueoAdmin); // login-admin.html
 app.get(endpoints.paxinas.inicioAdmin, paxinaInicioAdmin); // inicio-admin.html
 app.get(endpoints.xestion.bibliotecaAdmin, paxinaBiblioteca); // biblioteca-admin.html
+app.get(endpoints.xestion.usuarios, paxinaNovoUsuario); // crear-usuario.html
 app.get(endpoints.xestion.prestamos, paxinaPrestamos); // prestamos-admin.html
 app.get(endpoints.paxinas.formularioLibro, paxinaNovoLibro); // novo-libro.html
 app.get(endpoints.paxinas.formularioPrestamo, paxinaNovoPrestamo)//novo-prestamo.html
 
 //------------------------ GETTERS
+app.post(endpoints.paxinas.logueo, logueo);
+
+
+
 // libros
 
 app.get(endpoints.libros.leotodos,readLibros)
