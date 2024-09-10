@@ -344,3 +344,22 @@ form input{
     border-collapse: collapse;
     padding: 10px;
 }
+
+
+.tabla-usuarios{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 2em;
+}
+
+.tabla-usuarios th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+}
+.tabla-usuarios td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+}
