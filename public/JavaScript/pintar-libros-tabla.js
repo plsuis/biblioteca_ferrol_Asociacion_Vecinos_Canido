@@ -30,7 +30,7 @@ export const comunicacionBorrar = async (endpoint) => {
 };
 
 
-//BORRAR FILA/////////////
+//BORRAR FILA////////////////////
 export const borrarFila = () => {
     let borrar = document.querySelectorAll(".bin");
   
