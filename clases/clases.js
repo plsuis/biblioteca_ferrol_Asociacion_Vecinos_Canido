@@ -198,7 +198,7 @@ class AccionsLibroBBDD{
     }
     async actualizar(tabla,campo,valores){
         let sentencia = `UPDATE ${tabla} SET ${campo.titulo} = ? ,${campo.autor} = ? ,${campo.codigo} = ? ,${campo.editorial} = ? ,${campo.ano} = ?,${campo.xenero} = ? WHERE ${campo.codigo} = ?`;
-        this.bbdd.executar(sentencia,valores,"actualizado usuario")
+        this.bbdd.executar(sentencia,valores,"actualizado libro")
     }
 
     async buscar(tabla,campo,valores){
