@@ -10,6 +10,9 @@ let sentenciaSql ={
     selecionarTabla : function (tabla){
         return `SELECT * FROM ${tabla}`;
     },
+    selecionarTablasJoinLeft: function (tabla1,tabla2,campos,condicion){
+        return `SELECT ${campos} FROM ${tabla1} LEFT JOIN ${tabla2} on ${condicion}`;
+    },
     selecionarTablaWhere: function(dato){
         return `SELECT * FROM ${dato.tabla} WHERE ${dato.campo} = '${dato.valor}'`;
     },
