@@ -1,7 +1,9 @@
+
 const endpoints = {
     libros: {
         leotodos:"/leo-libros",
         borrar:"/borro-libro/",
+        actualizar:"/actualizar-libros/",
     }
 };
 /////// COMUNICACION
@@ -10,52 +12,80 @@ const comunicacion = async (endpoint) => {
     return datosRecibido.json();
 }
 
-export const comunicacionBorrar = async (endpoint) => {
-    /* const adaptoToken = () => {
-      let user = JSON.parse(localStorage.getItem("usuario"));
-      return user.usuario;
-    }; */
-    let datoEnviado = {
-      method: "DELETE",
-      /* headers: { Authorization: adaptoToken() }, */
-    };
-    /* console.log("BORRANDO CON TOKEN"); */
-    let datosRecibido = await fetch(endpoint, datoEnviado); // delete
+
+export const comunicacionGardar = async (endpoint, datos) => {
   
-    let datosRecibidoJson = await datosRecibido.json();
-    
-    
-    
-    return datosRecibidoJson;
+  let datoEnviado = {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(datos),
+  };
+ 
+  let datosRecibido = await fetch(endpoint, datoEnviado); 
+  let datosRecibidoJson = await datosRecibido.json();
+
+  return datosRecibidoJson;
+};
+/////////////////
+/////////////////
+const editarLibro = () => {
+  let editar = document.querySelectorAll(".pencil2");
+
+  for (let element of editar) {
+    element.addEventListener("click", async (e) => {
+      let tds = e.target.parentElement.parentElement.children;
+      //console.log("e.target ", e.target);
+      for (let numTd = 0; numTd < tds.length - 1; numTd++) {
+        tds[numTd].setAttribute("contenteditable", "true");
+        tds[0].setAttribute("name", "edicion");
+        tds[0].setAttribute("contenteditable", "true");
+        tds[numTd].addEventListener("input", () => {
+          tds[numTd].setAttribute("name", "edicion");
+        });
+      }
+    });
+  }
 };
 
+const guardarActualizacionLibro = () => {
+  let gardar = document.querySelectorAll(".save");
+  for (let element of gardar) {
+    element.addEventListener("click", async (e) => {
+      let tds = e.target.parentElement.parentElement.children;
+     
 
-//BORRAR FILA/////////////
-export const borrarFila = () => {
-    let borrar = document.querySelectorAll(".bin");
-  
-    for (let element of borrar) {
-      element.addEventListener("click", async (e) => {
-        
-        
-        let titulo = 
-          e.target.parentElement.parentElement.childNodes[0].textContent;
-        console.log(
-            "e.target(titulo) borrar--> ",
-            titulo,
-          );
-        let datoRecibido = await comunicacionBorrar(`/borro-libro/${titulo}`);
-        console.log("lo de arriba funciona???????????????");
-        let datoRecibidoJson = await datoRecibido.json();
-      console.log(datoRecibidoJson);
+      for (let numTd = 0; numTd < tds.length - 1; numTd++) {
+        tds[numTd].removeAttribute("name");
+        tds[numTd].setAttribute("contenteditable", "false");
+      }
+      
+      const crearObxetosModificados = (array) => {
+        let obxeto = {
+          titulo: array[0].textContent,
+          autor: array[1].textContent,
+          codigo: array[2].textContent,
+          editorial: array[3].textContent,
+          ano: array[4].textContent,
+          xenero: array[5].textContent,
+        };
+        return obxeto;
+      };
+      
+     let datoAEnviar = crearObxetosModificados(tds);
+      console.log("datoAEnviar ", datoAEnviar);
+      let id = e.target.parentElement.parentElement.childNodes[2].textContent;
+      console.log("id?--> ", id);
+      let datoRecibido = await comunicacionGardar(
+        `/actualizar-libros/?codigo=${id}`,
+        datoAEnviar,
+      );
 
-
-      window.location.reload();
-      return datoRecibidoJson;
-        
-      });
-    }
-  };
+      console.log("resposta recibida ", datoRecibido);
+    });
+  }
+};
 
 
 ////PINTAR TABLA
@@ -100,8 +130,9 @@ const resgistroInputs = async () => {
 
    fila.append(iconosTD);
     }
-
-    borrarFila();
+    editarLibro();
+    guardarActualizacionLibro();
+    
 };
 
 resgistroInputs();  

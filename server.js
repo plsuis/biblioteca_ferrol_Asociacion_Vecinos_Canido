@@ -68,7 +68,7 @@ app.post(endpoints.usuario.insertar,insertUsuarios)
 app.put(endpoints.libros.devolver,devolverLibros)
 app.put(endpoints.libros.actualizar,actualizarLibros)
 //usuarios
-app.put(endpoints.usuario.actualizar,actualizarUsuarios)
+app.put("/actualizar-libros/:id",actualizarUsuarios)
 
 //------------------------ DELETES
 
