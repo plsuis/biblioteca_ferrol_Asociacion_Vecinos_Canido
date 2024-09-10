@@ -73,7 +73,7 @@ app.put(endpoints.usuario.actualizar,actualizarUsuarios)
 //------------------------ DELETES
 
 //libros
-app.delete(endpoints.libros.borrar,borrarLibros)
+app.delete(`/borro-libro/:titulo`,borrarLibros)
 
 //usuarios
 app.delete(endpoints.usuario.borrar,borrarUsuarios)
