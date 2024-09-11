@@ -1,11 +1,13 @@
 
 const endpoints = {
-    libros: {
-        leotodos:"/leo-libros",
-        borrar:"/borro-libro/",
-        actualizar:"/actualizar-libros/",
+  usuario: {
+        leotodos:"/leo-usuarios",
+        borrar:"/borro-usuario/",
+        actualizar:"/actualizar-usuarios/",
     }
 };
+
+
 /////// COMUNICACION
 const comunicacion = async (endpoint) => {
     let datosRecibido = await fetch(endpoint); // GET
@@ -42,7 +44,7 @@ const comunicacionBorrar = async (endpoint) => {
 };
 /////////////////
 /////////////////
-const editarLibro = () => {
+const editarUsuario = () => {
   let editar = document.querySelectorAll(".pencil2");
 
   for (let element of editar) {
@@ -109,7 +111,7 @@ const borrarLibro = () => {
       
     let id = e.target.parentElement.parentElement.childNodes[2].textContent;
     console.log("id?--> ", id);
-    let datoRecibido = await comunicacionBorrar(`/borro-libro/?codigo=${id}`);
+    let datoRecibido = await comunicacionBorrar(`/borro-libro/${id}`);
     console.log("datoRecibido--> ", datoRecibido);
 })};};
 
@@ -118,33 +120,22 @@ const borrarLibro = () => {
 
   
 ////PINTAR TABLA
-const referenciaPaxina = document.querySelector(".pax-bilbio-sen-usuario");
 let tabla = document.querySelector(".body-tabla");
 
 const resgistroInputs = async () => {
     
-    let datosRecibidos = await comunicacion(endpoints.libros.leotodos);
+    let datosRecibidos = await comunicacion(endpoints.usuario.leotodos);
     let i = 0;
     for (i = 0; i < datosRecibidos.lista.length; i++) {
-    let datosLibros = datosRecibidos.lista[i];
-    //console.log("datosLibros",datosLibros)
+    let datosUsuarios = datosRecibidos.lista[i];
+    //console.log("datosUsuarios",datosUsuarios)
     let fila = document.createElement("tr");
     //console.log(fila)
     tabla.append(fila);
           //let cliente = datosConvertidos[i];
-   for (let propiedade in datosLibros) {
-    console.log(typeof datosLibros.Prestado_Libro_Prestado)
-    if(datosLibros.Prestado_Libro_Prestado == 1){
-      datosLibros.Prestado_Libro_Prestado = "Prestado"
-    }else if(datosLibros.Prestado_Libro_Prestado == "0") {
-      datosLibros.Prestado_Libro_Prestado = "Disponible"
-    }
+   for (let propiedade in datosUsuarios) {
     let celda = document.createElement("td");
-    let dato = JSON.stringify(datosLibros[propiedade]);
-    console.log("ESTOOOOOOOOOOOO",datosLibros.Prestado_Libro_Prestado);
-    
-    
-
+    let dato = JSON.stringify(datosUsuarios[propiedade]);
     celda.innerHTML = dato.replace(/\"/g, "");
     fila.append(celda);
    };
@@ -169,9 +160,9 @@ const resgistroInputs = async () => {
 
    fila.append(iconosTD);
     }
-    borrarLibro();
-    editarLibro();
-    guardarActualizacionLibro();
+    //borrarLibro();
+    editarUsuario();
+    //guardarActualizacionLibro();
     
 };
 
