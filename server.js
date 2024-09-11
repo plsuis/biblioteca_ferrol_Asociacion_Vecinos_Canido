@@ -68,12 +68,12 @@ app.post(endpoints.usuario.insertar,insertUsuarios)
 app.put(endpoints.libros.devolver,devolverLibros)
 app.put(endpoints.libros.actualizar,actualizarLibros)
 //usuarios
-app.put("/actualizar-libros/:id",actualizarUsuarios)
+app.put(endpoints.usuario.actualizar,actualizarUsuarios)
 
 //------------------------ DELETES
 
 //libros
-app.delete(`/borro-libro/:titulo`,borrarLibros)
+app.delete(endpoints.libros.borrar,borrarLibros)
 
 //usuarios
 app.delete(endpoints.usuario.borrar,borrarUsuarios)
