@@ -1,3 +1,4 @@
+let jwt = require('jsonwebtoken');
 const { AccionsUsuarioBBDD } = require("../../clases/clases");
 const { datosTablas } = require("../../datos/varios");
 const { refBBDD } = require("../../middlewares/helpers.middlewares");
@@ -15,8 +16,16 @@ const logueoUserJwt = async (req,res,next) => {
         const accion = new AccionsUsuarioBBDD(refBBDD);
         let datoBuscado = await accion.buscar(datosTablas.tablas.Usuario,campos,req.body) 
         console.log("dato buscado ",datoBuscado)
+
+        let datoParaEncriptar = {
+            nome:datoBuscado[0].Nome_Usuario,
+            dni:datoBuscado[0].DNI_Usuario
+        }
+
+        let token = jwt.sign({user:datoParaEncriptar},process.env.SEGREDO)
+
         res.send({
-            mensaxe:"usuario atopado",
+            token:token
         })
 
     }catch(error){

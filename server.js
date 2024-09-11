@@ -32,6 +32,7 @@ const {
     borrarUsuarios,
     actualizarUsuarios
 } = require("./middlewares/usuarios");
+require('dotenv').config();
 //const { logueo } = require("./middlewares/helpers.middlewares.js");
 // END-POINTS
 /*
