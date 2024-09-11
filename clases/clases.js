@@ -221,6 +221,17 @@ class AccionsUsuarioBBDD{
         let sentencia = `UPDATE ${tabla} SET ${campo.nome} = ? ,${campo.apelido1} = ? ,${campo.apelido2} = ? ,${campo.dni} = ? ,${campo.rol} = ? WHERE ${campo.dni} = ?`;
         this.bbdd.executar(sentencia,valores,"actualizado usuario")
     }
+
+    async buscar(tabla,campo,valores){
+        let sentencia;
+        try{
+            sentencia = `SELECT * FROM ${tabla} WHERE ${campo.nome} = '${valores.nome}' AND ${campo.dni} = '${valores.dni}'`;
+            console.log("sentencia ",sentencia)
+            return await this.bbdd.consultar(sentencia,"dato usuario buscado")
+        }catch(error){
+            console.error("error devolvendo libros",error)
+        }
+    }
 }
 module.exports = {
     Libro,

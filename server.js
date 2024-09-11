@@ -12,6 +12,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.static(path.join(__dirname,"public")))
+// CONTROLADORES
+const {
+    logueoUserJwt
+} = require("./controladores/usuarios")
 // MIDDLEWARES
 const {
     readLibros,
@@ -21,16 +25,16 @@ const {
     borrarLibros,
     actualizarLibros,
     buscarLibros
-} = require("./middlewares/libros/index.js");
+} = require("./middlewares/libros");
 const {
     readUsuarios,
     insertUsuarios,
     borrarUsuarios,
     actualizarUsuarios
-} = require("./middlewares/usuarios/index.js");
-const { logueo } = require("./middlewares/helpers.middlewares.js");
+} = require("./middlewares/usuarios");
+//const { logueo } = require("./middlewares/helpers.middlewares.js");
 // END-POINTS
-
+/*
 app.get(endpoints.paxinas.bibliotecaSenUsuario, paxinaBibliotecaSenUsuario); // biblioteca.html
 app.get(endpoints.paxinas.logueo, paxinaLogueoAdmin); // login-admin.html
 app.get(endpoints.paxinas.inicioAdmin, paxinaInicioAdmin); // inicio-admin.html
@@ -39,7 +43,7 @@ app.get(endpoints.xestion.usuarios, paxinaNovoUsuario); // crear-usuario.html
 app.get(endpoints.xestion.prestamos, paxinaPrestamos); // prestamos-admin.html
 app.get(endpoints.paxinas.formularioLibro, paxinaNovoLibro); // novo-libro.html
 app.get(endpoints.paxinas.formularioPrestamo, paxinaNovoPrestamo)//novo-prestamo.html
-
+*/
 //------------------------ GETTERS
 //app.post(endpoints.paxinas.logueo, logueo);
 
@@ -57,9 +61,12 @@ app.get(endpoints.usuario.leotodos,readUsuarios)
 //------------------------ POST
 
 // libros
+
 app.post(endpoints.libros.insertar,insertLibros);
-app.post(endpoints.libros.prestar,prestarLibros)
+app.post(endpoints.libros.prestar,prestarLibros);
+
 // usuarios
+app.post(endpoints.usuario.logueo,logueoUserJwt)
 app.post(endpoints.usuario.insertar,insertUsuarios)
 
 //------------------------ PUTS
@@ -73,7 +80,7 @@ app.put(endpoints.usuario.actualizar,actualizarUsuarios)
 //------------------------ DELETES
 
 //libros
-app.delete(`/borro-libro/:titulo`,borrarLibros)
+app.delete(endpoints.libros.borrar,borrarLibros)
 
 //usuarios
 app.delete(endpoints.usuario.borrar,borrarUsuarios)

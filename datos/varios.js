@@ -25,6 +25,7 @@ const endpoints = {
         actualizar:"/actualizar-usuarios",
         borrar:"/borro-usuario/",
         leotodos:"/leo-usuarios",
+        logueo:"/logueo"
     }
 }
 let datosTablas = {
