@@ -63,7 +63,7 @@ const editarUsuario = () => {
   }
 };
 
-const guardarActualizacionLibro = () => {
+const guardarActualizacionUsuario = () => {
   let gardar = document.querySelectorAll(".save");
   for (let element of gardar) {
     element.addEventListener("click", async (e) => {
@@ -77,22 +77,21 @@ const guardarActualizacionLibro = () => {
       
       const crearObxetosModificados = (array) => {
         let obxeto = {
-          titulo: array[0].textContent,
-          autor: array[1].textContent,
-          codigo: array[2].textContent,
-          editorial: array[3].textContent,
-          ano: array[4].textContent,
-          xenero: array[5].textContent,
+          nome: array[0].textContent,
+          apelidouno: array[1].textContent,
+          apelidodos: array[2].textContent,
+          dni: array[3].textContent,
+          rol: array[4].textContent,
         };
         return obxeto;
       };
       
      let datoAEnviar = crearObxetosModificados(tds);
       console.log("datoAEnviar ", datoAEnviar);
-      let id = e.target.parentElement.parentElement.childNodes[2].textContent;
+      let id = e.target.parentElement.parentElement.childNodes[3].textContent;
       console.log("id?--> ", id);
       let datoRecibido = await comunicacionGardar(
-        `/actualizar-libros/?codigo=${id}`,
+        `/actualizar-usuarios/`,
         datoAEnviar,
       );
 
@@ -101,7 +100,7 @@ const guardarActualizacionLibro = () => {
   }
 };
 
-const borrarLibro = () => {
+const borrarUsuario = () => {
   
   let borrar = document.querySelectorAll(".bin");
 
@@ -109,9 +108,9 @@ const borrarLibro = () => {
     element.addEventListener("click", async (e) => {
       
       
-    let id = e.target.parentElement.parentElement.childNodes[2].textContent;
+    let id = e.target.parentElement.parentElement.childNodes[3].textContent;
     console.log("id?--> ", id);
-    let datoRecibido = await comunicacionBorrar(`/borro-libro/${id}`);
+    let datoRecibido = await comunicacionBorrar(`borro-usuario/?dni=${id}`);
     console.log("datoRecibido--> ", datoRecibido);
 })};};
 
@@ -160,9 +159,9 @@ const resgistroInputs = async () => {
 
    fila.append(iconosTD);
     }
-    //borrarLibro();
+    borrarUsuario();
     editarUsuario();
-    //guardarActualizacionLibro();
+    guardarActualizacionUsuario();
     
 };
 

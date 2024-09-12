@@ -90,9 +90,15 @@
     
     <script type="module" async>
   
-  
+      let botonEnviarUsuario = document.querySelector(".boton-aceptar-usuario");
+
+    let inputNome = document.querySelector("#nome-usuario");
+    let inputPrimerApelido = document.querySelector("#primer-apelido-usuario");
+    let inputSegundoApelido = document.querySelector("#segundo-apelido-usuario");
+    let inputDNI = document.querySelector("#dni-usuario");
+    let inputRol = document.querySelector("#rol-usuario");
+
     let formNovoUsuario = document.querySelector("#form-novo-usuario");
-    
     
     formNovoUsuario.addEventListener("submit", async (e)=>{
       e.preventDefault();
