@@ -23,11 +23,11 @@ const paxinaLogueoAdmin = (req, res) => {
 };
 
 const paxinaInicioAdmin = (req, res) => {
-    /* const optionsRuta = {
+     const optionsRuta = {
         root: path.join(__dirname, "../public"),
     };
-    res.sendFile(paxinasObxecto.paxinas.inicioAdmin, optionsRuta); */
-    res.send({paxina:paxinasObxecto.paxinas.inicioAdmin})
+    res.sendFile("./views/inicio-admin.html", optionsRuta);
+    
 };
 
 const paxinaNovoUsuario = (req, res) => {

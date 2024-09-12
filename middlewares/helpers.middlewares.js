@@ -33,7 +33,7 @@ const logueo = (req, res) => {
 
           res.send({
             estado: "ok",
-            token: token,
+            usuario: token,
           });
         }
       },
@@ -41,9 +41,14 @@ const logueo = (req, res) => {
   };
   
 const comprobarUser = (req,res,next,Nome,Contrasinal)=>{
+  console.log("Nome ",Nome,"Contrasinal ",Contrasinal);
+  let contrasinal = `${Contrasinal}`;
+  let nome = `${Nome}`;
+  let array = [contrasinal,nome]
+  console.log('array ',array)
   conectoBBDD.get(
-    "select * from Usuario WHERE DNI_Usuario = ? and Nome_Usuario = ?",
-    [DNI_Usuario, Nome_Usuario],
+    `select * from Usuario WHERE DNI_Usuario = ? and Nome_Usuario = ?`,
+    array,
     (err, row) => {
       if (err) {
         res.status(500).json({ error: "Error al realizar la consulta" });
@@ -62,16 +67,18 @@ const comprobarUser = (req,res,next,Nome,Contrasinal)=>{
 
 const comprobarUserToken = (req, res, next)=>{
 const {authorization} = req.headers;
-console.log("authoriza...",authorization,req.headers)
-res.send({mensaxe:'comprobando cambeceiras'})
-/* if (!authorization){
+console.log("authoriza...",authorization)
+//res.send({mensaxe:'comprobando cambeceiras'})
+if (!authorization){
   const error = new Error("Falta a cabeceira da autorizacion");
   error.httpStatus = 401;
   throw error;
 }
 let tokenInfo;
 tokenInfo = jwt.verify(authorization, process.env.SEGREDO);
-comprobarUser (req,res,next,tokenInfo.user.Nome, tokenInfo.user.Contrasinal); */
+console.log("token info ",tokenInfo)
+//res.send({mensaxe:'comprobando cambeceiras'})
+comprobarUser (req,res,next,tokenInfo.user.Nome, tokenInfo.user.Contrasinal);
 }
 
 module.exports = {
