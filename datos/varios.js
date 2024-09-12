@@ -9,7 +9,11 @@ const endpoints = {
         bibliotecaSenUsuario:"/nosos-libros",
         inicioAdmin:"/administracion",
         formularioLibro:"/formulario-libro",
-        formularioPrestamo:"/formulario-prestamo"
+        formularioPrestamo:"/formulario-prestamo",
+        logueados:{
+            bodyAdmin:"/envio-paxina-admin",
+            bodyNovoLibro:"/envio-paxina-novo-libro"
+        }
     },
     libros:{
         insertar:"/insertar-libro",

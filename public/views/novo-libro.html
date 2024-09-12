@@ -6,7 +6,8 @@
     <title>Engadir Libro - Biblioteca da AV Canido</title>
     <link href="../CSS/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href="../imaxes/av_canido_favicon.png" />
-    <script type="module" async src="../JavaScript/copyright-auto.js"></script>
+    <script type="module" async src="../JavaScript/funcions/copyright-auto.js"></script>
+    <script type="module" async src="../JavaScript/funcions/novo-libro.js"></script>
 
     <!--FONTS = Comfortaa | Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -93,53 +94,5 @@
     <footer>
         <p class="copyright"></p>
     </footer>
-<script type="module" async>
-  
-
-
-
-let botonEnviarLibro = document.querySelector(".boton-enviar-libro");
-
-let inputTitulo = document.querySelector("#input-titulo");
-let inputAutor = document.querySelector("#input-autor");
-let inputXenero = document.querySelector("#input-xenero");
-let inputEditorial = document.querySelector("#input-editorial");
-let inputIsbn = document.querySelector("#input-isbn");
-
-
-let formNovoLibro = document.querySelector("#form-novo-libro");
-
-
-formNovoLibro.addEventListener("submit", async (e)=>{
-  e.preventDefault();
-  let datos = new FormData(formNovoLibro);
-  let obxectoDato = {};
-  for(let [name,value] of datos){
-    console.log(`${name} = ${value}`)
-    obxectoDato[`${name}`] = value;
-  };
-
-  let datoEnviadoJSON = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(obxectoDato)
-
-  }
-let respostaRecibida = await fetch("/insertar-libro",datoEnviadoJSON);
-let respostaRecibidaJSON = await respostaRecibida.json(); 
-console.log("respostaRecibidaJSON",respostaRecibidaJSON);
-////////
-
-
-
-
-
-
-})
-
-
-</script>
   </body>
 </html>
