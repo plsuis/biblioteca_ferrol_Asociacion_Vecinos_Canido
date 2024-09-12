@@ -11,7 +11,8 @@ const endpoints = {
         formularioLibro:"/formulario-libro",
         formularioPrestamo:"/formulario-prestamo",
         logueados:{
-            bodyAdmin:"/envio-paxina-admin"
+            bodyAdmin:"/envio-paxina-admin",
+            bodyNovoLibro:"/envio-paxina-novo-libro"
         }
     },
     libros:{

@@ -32,7 +32,8 @@ const {
 const { logueo, comprobarUserToken } = require("./middlewares/helpers.middlewares.js");
 
 const {
-    bodyAdministracion
+    bodyAdministracion,
+    bodyNovoLibro
 } = require("./controladores/administracion")
 
 // END-POINTS
@@ -50,7 +51,8 @@ app.get(endpoints.paxinas.formularioPrestamo, paxinaNovoPrestamo)//novo-prestamo
 //------------------------ GETTERS
 // ---- GETTERS ENVIANDO CONTIDOS DO BODY ----
 
-app.get(endpoints.paxinas.logueados.bodyAdmin,comprobarUserToken,bodyAdministracion)
+app.get(endpoints.paxinas.logueados.bodyAdmin,comprobarUserToken,bodyAdministracion);
+//app.get(endpoints.paxinas.logueados.bodyNovoLibro,comprobarUserToken,bodyNovoLibro)
 
 
 // libros
