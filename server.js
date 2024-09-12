@@ -7,6 +7,7 @@ const { paxinaBiblioteca, paxinaPrestamos, paxinaNovoLibro, paxinaNovoPrestamo, 
 const { endpoints } = require("./datos/varios.js");
 
 const app = express();
+require("dotenv").config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -28,20 +29,20 @@ const {
     borrarUsuarios,
     actualizarUsuarios
 } = require("./middlewares/usuarios/index.js");
-const { logueo } = require("./middlewares/helpers.middlewares.js");
+const { logueo, comprobarUserToken } = require("./middlewares/helpers.middlewares.js");
 // END-POINTS
 
 app.get(endpoints.paxinas.bibliotecaSenUsuario, paxinaBibliotecaSenUsuario); // biblioteca.html
 app.get(endpoints.paxinas.logueo, paxinaLogueoAdmin); // login-admin.html
-app.get(endpoints.paxinas.inicioAdmin, paxinaInicioAdmin); // inicio-admin.html
-app.get(endpoints.xestion.bibliotecaAdmin, paxinaBiblioteca); // biblioteca-admin.html
-app.get(endpoints.xestion.usuarios, paxinaNovoUsuario); // crear-usuario.html
-app.get(endpoints.xestion.prestamos, paxinaPrestamos); // prestamos-admin.html
-app.get(endpoints.paxinas.formularioLibro, paxinaNovoLibro); // novo-libro.html
-app.get(endpoints.paxinas.formularioPrestamo, paxinaNovoPrestamo)//novo-prestamo.html
+app.get(endpoints.paxinas.inicioAdmin, comprobarUserToken, paxinaInicioAdmin); // inicio-admin.html
+app.get(endpoints.xestion.bibliotecaAdmin,comprobarUserToken, paxinaBiblioteca); // biblioteca-admin.html
+app.get(endpoints.xestion.usuarios,comprobarUserToken, paxinaNovoUsuario); // crear-usuario.html
+app.get(endpoints.xestion.prestamos,comprobarUserToken, paxinaPrestamos); // prestamos-admin.html
+app.get(endpoints.paxinas.formularioLibro,comprobarUserToken, paxinaNovoLibro); // novo-libro.html
+app.get(endpoints.paxinas.formularioPrestamo,comprobarUserToken, paxinaNovoPrestamo)//novo-prestamo.html
 
 //------------------------ GETTERS
-//app.post(endpoints.paxinas.logueo, logueo);
+app.post(endpoints.paxinas.logueo,logueo);
 
 
 

@@ -100,11 +100,12 @@ formulario.addEventListener("submit", async (e) => {
   console.log("resposta ", contestacionRecibida);
   // COMPROBAMOS A RESPOSTA DO SERVIDOR
   if (contestacionRecibida.estado == "ok") {
-    location.replace("/administracion"); // 'sustitue a URL a partir server '/' creando un endpoint GET'
+     // 'sustitue a URL a partir server '/' creando un endpoint GET'
 
-    localStorage.setItem("usuario", JSON.stringify(contestacionRecibida));
-    let menxaxeRecibida = JSON.parse(localStorage.getItem("usuario"));
+    localStorage.setItem("token", JSON.stringify(contestacionRecibida.token));
+    let menxaxeRecibida = JSON.parse(localStorage.getItem("token"));
     console.log(menxaxeRecibida);
+    location.replace("/administracion");
   } else {
     var condicionUsuario = document.querySelector(".condicion-usuario");
     condicionUsuario.innerHTML = "A información non é correcta";
