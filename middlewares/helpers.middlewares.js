@@ -62,14 +62,16 @@ const comprobarUser = (req,res,next,Nome,Contrasinal)=>{
 
 const comprobarUserToken = (req, res, next)=>{
 const {authorization} = req.headers;
-if (!authorization){
+console.log("authoriza...",authorization,req.headers)
+res.send({mensaxe:'comprobando cambeceiras'})
+/* if (!authorization){
   const error = new Error("Falta a cabeceira da autorizacion");
   error.httpStatus = 401;
   throw error;
 }
 let tokenInfo;
 tokenInfo = jwt.verify(authorization, process.env.SEGREDO);
-comprobarUser (req,res,next,tokenInfo.user.Nome, tokenInfo.user.Contrasinal);
+comprobarUser (req,res,next,tokenInfo.user.Nome, tokenInfo.user.Contrasinal); */
 }
 
 module.exports = {

@@ -34,7 +34,7 @@ const { logueo, comprobarUserToken } = require("./middlewares/helpers.middleware
 
 app.get(endpoints.paxinas.bibliotecaSenUsuario, paxinaBibliotecaSenUsuario); // biblioteca.html
 app.get(endpoints.paxinas.logueo, paxinaLogueoAdmin); // login-admin.html
-app.get(endpoints.paxinas.inicioAdmin, paxinaInicioAdmin); // inicio-admin.html
+app.get(endpoints.paxinas.inicioAdmin, comprobarUserToken, paxinaInicioAdmin); // inicio-admin.html
 app.get(endpoints.xestion.bibliotecaAdmin, paxinaBiblioteca); // biblioteca-admin.html
 app.get(endpoints.xestion.usuarios,paxinaNovoUsuario); // crear-usuario.html
 app.get(endpoints.xestion.prestamos, paxinaPrestamos); // prestamos-admin.html

@@ -38,15 +38,27 @@ formulario.addEventListener("submit", async (e) => {
   let respostaLogueo = await fetch("/iniciar-sesion", obxetoEnvio);
 
   let contestacionRecibida = await respostaLogueo.json();
-  //console.log("resposta ", contestacionRecibida);
+  console.log("resposta ", contestacionRecibida);
   
   if (contestacionRecibida.estado == "ok") {
      
 
     localStorage.setItem("token", JSON.stringify(contestacionRecibida.token));
-    let menxaxeRecibida = JSON.parse(localStorage.getItem("token"));
+    //let menxaxeRecibida = JSON.parse(localStorage.getItem("token"));
     //console.log(menxaxeRecibida);
-    location.replace("/administracion");
+    let token = localStorage.getItem("token");
+    let tokenParseado = JSON.parse(token);
+    let datoEnviadoJSON = {
+      method: "GET",
+      headers: {
+        Authorization: tokenParseado.token,
+      },
+  };
+
+  let respostaRecibida = await fetch("/administracion", datoEnviadoJSON);
+  console.log('respostaRecibida ',respostaRecibida)
+
+    //location.replace("/administracion");
   } else {
     var condicionUsuario = document.querySelector(".condicion-usuario");
     condicionUsuario.innerHTML = "A información non é correcta";
