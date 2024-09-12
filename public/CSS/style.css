@@ -99,6 +99,7 @@ footer{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-left: 150px; 
     
 }
 #form-inicio-sesion div{
@@ -118,6 +119,7 @@ border-radius: 5px;
 }
 #form-inicio-sesion button{
     background-color: #0981fa;
+    width: 200px;
     color: white;
     padding: 5px;
     border: none;
@@ -280,6 +282,21 @@ h2{
     border-collapse: collapse;
     padding: 10px;
 }
+
+.bin:hover {
+    cursor: pointer;
+    background-color:darkgray;
+  }
+  .save:hover {
+    cursor: pointer;
+    background-color:darkgray;
+  }
+  .pencil2:hover {
+    cursor: pointer;
+    background-color:darkgray;
+  }
+  
+
 
 /* -------------------------CSS DOS FORMULARIOS--------------------- */
 
