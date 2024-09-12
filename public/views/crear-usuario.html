@@ -7,10 +7,11 @@
     <title>Usuarios - Biblioteca da AV Canido</title>
     <link href="../CSS/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href="../imaxes/av_canido_favicon.png" />
-    <script type="module" async src="../JavaScript/copyright-auto.js"></script>
-    <script type="module" async src="../JavaScript/pintar-tabla-usuarios.js"></script>
+    <!-- -----ENLACES JS---- -->
+    <script type="module" async src="../JavaScript/funcions/copyright-auto.js"></script>
+    <script type="module" async src="../JavaScript/funcions/crear-usuario.js"></script>
+    <script type="module" async src="../JavaScript/funcions/pintar-tabla-usuarios.js"></script>
     
-
     <!--FONTS = Comfortaa | Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,7 +51,7 @@
             <input id="dni-usuario" type="text" name="DNI_Usuario" required/>
           </div>
           <div>
-            <label>ROL</label>
+            <label>ROL<span class="asterisco"> *</span></label>
             <select id="rol-usuario" name="ROL_Usuario">
               <option>--Sen Rol--</option>
               <option>socio</option>
@@ -87,41 +88,5 @@
     <footer>
         <p class="copyright"></p>
     </footer>
-    
-    <script type="module" async>
-  
-      let botonEnviarUsuario = document.querySelector(".boton-aceptar-usuario");
-
-    let inputNome = document.querySelector("#nome-usuario");
-    let inputPrimerApelido = document.querySelector("#primer-apelido-usuario");
-    let inputSegundoApelido = document.querySelector("#segundo-apelido-usuario");
-    let inputDNI = document.querySelector("#dni-usuario");
-    let inputRol = document.querySelector("#rol-usuario");
-
-    let formNovoUsuario = document.querySelector("#form-novo-usuario");
-    
-    formNovoUsuario.addEventListener("submit", async (e)=>{
-      e.preventDefault();
-      let datos = new FormData(formNovoUsuario);
-      let obxectoDato = {};
-      for(let [name,value] of datos){
-        console.log(`${name} = ${value}`)
-        obxectoDato[`${name}`] = value;
-      };
-    
-      let datoEnviadoJSON = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(obxectoDato)
-    
-      }
-    let respostaRecibida = await fetch("/insertar-usuarios",datoEnviadoJSON);
-    let respostaRecibidaJSON = await respostaRecibida.json(); 
-    console.log("respostaRecibidaJSON",respostaRecibidaJSON);
-    
-    }) 
-  </script>
   </body>
 </html>

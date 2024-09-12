@@ -1,3 +1,4 @@
+import { comunicacion, comunicacionBorrar, comunicacionGardar } from "../comunicacion/comunicacion.js";
 
 const endpoints = {
   usuario: {
@@ -7,43 +8,8 @@ const endpoints = {
     }
 };
 
+//----- FUNCIONS DE EDICION DA TABOA -----//
 
-/////// COMUNICACION
-const comunicacion = async (endpoint) => {
-    let datosRecibido = await fetch(endpoint); // GET
-    return datosRecibido.json();
-}
-
-export const comunicacionGardar = async (endpoint, datos) => {
-  
-  let datoEnviado = {
-    method: "PUT",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(datos),
-  };
- 
-  let datosRecibido = await fetch(endpoint, datoEnviado); 
-  let datosRecibidoJson = await datosRecibido.json();
-
-  return datosRecibidoJson;
-};
-
-const comunicacionBorrar = async (endpoint) => {
-
-  let datoEnviado = {
-    method: "DELETE"
-  };
-  console.log("xxxxxxxx", datoEnviado)
-
-  let datosRecibido = await fetch(endpoint,datoEnviado); 
-  let datosRecibidoJson = await datosRecibido.json();
-
-  return datosRecibidoJson;
-};
-/////////////////
-/////////////////
 const editarUsuario = () => {
   let editar = document.querySelectorAll(".pencil2");
 
@@ -87,15 +53,15 @@ const guardarActualizacionUsuario = () => {
       };
       
      let datoAEnviar = crearObxetosModificados(tds);
-      console.log("datoAEnviar ", datoAEnviar);
+      //console.log("datoAEnviar ", datoAEnviar);
       let id = e.target.parentElement.parentElement.childNodes[3].textContent;
-      console.log("id?--> ", id);
+      //console.log("id?--> ", id);
       let datoRecibido = await comunicacionGardar(
         `/actualizar-usuarios/`,
         datoAEnviar,
       );
 
-      console.log("resposta recibida ", datoRecibido);
+      //console.log("resposta recibida ", datoRecibido);
     });
   }
 };
@@ -109,16 +75,14 @@ const borrarUsuario = () => {
       
       
     let id = e.target.parentElement.parentElement.childNodes[3].textContent;
-    console.log("id?--> ", id);
+    //console.log("id?--> ", id);
     let datoRecibido = await comunicacionBorrar(`borro-usuario/?dni=${id}`);
-    console.log("datoRecibido--> ", datoRecibido);
+    //console.log("datoRecibido--> ", datoRecibido);
+
+    window.location.reload();
 })};};
-
-
-
-
   
-////PINTAR TABLA
+//----- FUNCION PARA PINTAR A TABOA -----//
 let tabla = document.querySelector(".body-tabla");
 
 const resgistroInputs = async () => {
