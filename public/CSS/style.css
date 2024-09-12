@@ -47,7 +47,7 @@ nav ul li a:hover{
     justify-content: center;
     padding-top: 80px;
 }
-#barra-busqueda{
+.pax-inicio-sen-rexistrar input{
     padding: 15px 15px 15px 50px;
     width: 500px;
     border: 2px solid #0981fa;
@@ -56,7 +56,7 @@ nav ul li a:hover{
     font-size: 17px;
     
 }
-#boton-busqueda{
+.pax-inicio-sen-rexistrar button{
     background-color: #0981fa;
     border: none;
     padding: 15px;
@@ -64,15 +64,18 @@ nav ul li a:hover{
     transition-duration: 0.2s;
     overflow: hidden;
     cursor: pointer;
+    margin: 5px;
+    color: white;
+    font-size: 15px;
 }
 
-#boton-busqueda:hover {
+.pax-inicio-sen-rexistrar button:hover {
     background-color: #a2a7b4;
     transition-duration: 0.2s;
 }
   
   
-#boton-busqueda:active {
+.pax-inicio-sen-rexistrar button:active {
     background-color: #51545c;
     transition: 0s
 }
@@ -359,6 +362,42 @@ form input{
     padding: 10px;
 }
 .tabla-usuarios td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+.tabla-prestamos{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 2em;
+}
+
+.tabla-prestamos th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+}
+.tabla-prestamos td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+.resultados-busqueda{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 2em;
+}
+
+.resultados-busqueda th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+}
+.resultados-busqueda td {
     border: 1px solid black;
     border-collapse: collapse;
     padding: 10px;

@@ -1,6 +1,5 @@
-    /*************************************************************/
-    /* FACER QUE O ANO DO COPYRIGHT SE ACTUALIZE AUTOMATICAMENTE */
-    /*************************************************************/
+    //----- FUNCIONS PARA ACTUALIZAR O ANO DO COPYRIGHT -----//
+
     const copyright = document.querySelector('.copyright');
 
     const AnoActual = new Date().getFullYear();

@@ -1,50 +1,15 @@
+import { comunicacion, comunicacionBorrar, comunicacionGardar } from "../comunicacion/comunicacion.js";
 
 const endpoints = {
-  usuario: {
-        leotodos:"/leo-usuarios",
-        borrar:"/borro-usuario/",
-        actualizar:"/actualizar-usuarios/",
+    libros: {
+        leotodos:"/leo-libros",
+        borrar:"/borro-libro/",
+        actualizar:"/actualizar-libros/",
     }
 };
 
-
-/////// COMUNICACION
-const comunicacion = async (endpoint) => {
-    let datosRecibido = await fetch(endpoint); // GET
-    return datosRecibido.json();
-}
-
-export const comunicacionGardar = async (endpoint, datos) => {
-  
-  let datoEnviado = {
-    method: "PUT",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(datos),
-  };
- 
-  let datosRecibido = await fetch(endpoint, datoEnviado); 
-  let datosRecibidoJson = await datosRecibido.json();
-
-  return datosRecibidoJson;
-};
-
-const comunicacionBorrar = async (endpoint) => {
-
-  let datoEnviado = {
-    method: "DELETE"
-  };
-  console.log("xxxxxxxx", datoEnviado)
-
-  let datosRecibido = await fetch(endpoint,datoEnviado); 
-  let datosRecibidoJson = await datosRecibido.json();
-
-  return datosRecibidoJson;
-};
-/////////////////
-/////////////////
-const editarUsuario = () => {
+//----- FUNCION PARA HABILITAR A EDICION DO LIBRO -----//
+const editarLibro = () => {
   let editar = document.querySelectorAll(".pencil2");
 
   for (let element of editar) {
@@ -63,6 +28,7 @@ const editarUsuario = () => {
   }
 };
 
+//----- FUNCION PARA GARDAR E DESHABILITAR A EDICION DO LIBRO -----//
 const guardarActualizacionLibro = () => {
   let gardar = document.querySelectorAll(".save");
   for (let element of gardar) {
@@ -88,19 +54,20 @@ const guardarActualizacionLibro = () => {
       };
       
      let datoAEnviar = crearObxetosModificados(tds);
-      console.log("datoAEnviar ", datoAEnviar);
+      //console.log("datoAEnviar ", datoAEnviar);
       let id = e.target.parentElement.parentElement.childNodes[2].textContent;
-      console.log("id?--> ", id);
+      //console.log("id?--> ", id);
       let datoRecibido = await comunicacionGardar(
         `/actualizar-libros/?codigo=${id}`,
         datoAEnviar,
       );
 
-      console.log("resposta recibida ", datoRecibido);
+      //console.log("resposta recibida ", datoRecibido);
     });
   }
 };
 
+//----- FUNCION PARA BORRAR O LIBRO -----//
 const borrarLibro = () => {
   
   let borrar = document.querySelectorAll(".bin");
@@ -110,36 +77,42 @@ const borrarLibro = () => {
       
       
     let id = e.target.parentElement.parentElement.childNodes[2].textContent;
-    console.log("id?--> ", id);
-    let datoRecibido = await comunicacionBorrar(`/borro-libro/${id}`);
-    console.log("datoRecibido--> ", datoRecibido);
+    //console.log("id?--> ", id);
+    let datoRecibido = await comunicacionBorrar(`/borro-libro/?codigo=${id}`);
+    //console.log("datoRecibido--> ", datoRecibido);
+    window.location.reload();
 })};};
-
-
-
-
   
-////PINTAR TABLA
+//----- FUNCION PARA PINTAR A TABOA DE LIBROS EDITABLE -----//
 let tabla = document.querySelector(".body-tabla");
 
 const resgistroInputs = async () => {
     
-    let datosRecibidos = await comunicacion(endpoints.usuario.leotodos);
+    let datosRecibidos = await comunicacion(endpoints.libros.leotodos);
     let i = 0;
     for (i = 0; i < datosRecibidos.lista.length; i++) {
-    let datosUsuarios = datosRecibidos.lista[i];
-    //console.log("datosUsuarios",datosUsuarios)
+    let datosLibros = datosRecibidos.lista[i];
+    //console.log("datosLibros",datosLibros)
     let fila = document.createElement("tr");
     //console.log(fila)
     tabla.append(fila);
           //let cliente = datosConvertidos[i];
-   for (let propiedade in datosUsuarios) {
+   for (let propiedade in datosLibros) {
+    
+    if(datosLibros.Prestado_Libro_Prestado == 1){
+      datosLibros.Prestado_Libro_Prestado = "Prestado"
+    }else if(datosLibros.Prestado_Libro_Prestado == "0") {
+      datosLibros.Prestado_Libro_Prestado = ""
+    }
     let celda = document.createElement("td");
-    let dato = JSON.stringify(datosUsuarios[propiedade]);
+    let dato = JSON.stringify(datosLibros[propiedade]);
+    
     celda.innerHTML = dato.replace(/\"/g, "");
     fila.append(celda);
    };
-   //////////////////crear td con iconitos
+
+   /*-----CREAR E ENGADIR OS BOTONS PARA EDITAR A TABOA-----*/
+
    let iconosTD = document.createElement("td");
 
    let papelera = document.createElement("img");
@@ -160,9 +133,9 @@ const resgistroInputs = async () => {
 
    fila.append(iconosTD);
     }
-    //borrarLibro();
-    editarUsuario();
-    //guardarActualizacionLibro();
+    borrarLibro();
+    editarLibro();
+    guardarActualizacionLibro();
     
 };
 

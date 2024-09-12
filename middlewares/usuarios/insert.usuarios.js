@@ -10,7 +10,7 @@ const insertUsuarios = async (req,res,next)=>{
             valores:Object.values(req.body),
             interrogacions:"?,?,?,?,?"
         }
-        let sentencia = sentenciaSql.insertar(datos.tabla,datos.campos,datos.interrogacions)
+        let sentencia = sentenciaSql.insertarUsuario(datos.tabla,datos.campos,datos.interrogacions)
         let arrayUsuarios = await refBBDD.executar(sentencia,datos.valores,"insertados")
         console.log('... ',arrayUsuarios)
         res.send({

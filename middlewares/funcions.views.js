@@ -1,4 +1,5 @@
 const path = require("path");
+const { paxinasObxecto } = require("../arquivosEncriptados/encriptacion-paxinas.js");
 
 const paxinaInicio = (req, res) => {
     const optionsRuta = {
@@ -22,10 +23,11 @@ const paxinaLogueoAdmin = (req, res) => {
 };
 
 const paxinaInicioAdmin = (req, res) => {
-    const optionsRuta = {
+    /* const optionsRuta = {
         root: path.join(__dirname, "../public"),
     };
-    res.sendFile("./views/inicio-admin.html", optionsRuta);
+    res.sendFile(paxinasObxecto.paxinas.inicioAdmin, optionsRuta); */
+    res.send({paxina:paxinasObxecto.paxinas.inicioAdmin})
 };
 
 const paxinaNovoUsuario = (req, res) => {

@@ -3,6 +3,10 @@ let sentenciaSql ={
         console.log( `INSERT INTO ${tabla} (${campos[0]},${campos[1]},${campos[2]},${campos[3]},${campos[4]},${campos[5]}) VALUES (${interrogacions})`)
         return `INSERT INTO ${tabla} (${campos[0]},${campos[1]},${campos[2]},${campos[3]},${campos[4]},${campos[5]}) VALUES (${interrogacions})`;
     },
+    insertarUsuario : function (tabla,campos,interrogacions){
+        console.log( `INSERT INTO ${tabla} (${campos[0]},${campos[1]},${campos[2]},${campos[3]},${campos[4]}) VALUES (${interrogacions})`)
+        return `INSERT INTO ${tabla} (${campos[0]},${campos[1]},${campos[2]},${campos[3]},${campos[4]}) VALUES (${interrogacions})`;
+    },
     insertarLibroPrestado : function (tabla,campos,interrogacions){
         console.log( `INSERT INTO ${tabla} (${campos[0]},${campos[1]},${campos[2]},${campos[3]}) VALUES (${interrogacions})`)
         return `INSERT INTO ${tabla} (${campos[0]},${campos[1]},${campos[2]},${campos[3]}) VALUES (${interrogacions})`;

@@ -7,7 +7,8 @@
     <title>Biblioteca da AV Canido</title>
     <link href="./CSS/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href="./imaxes/av_canido_favicon.png" />
-    <script type="module" async src="./JavaScript/copyright-auto.js"></script>
+    <script type="module" async src="./JavaScript/funcions/copyright-auto.js"></script>
+    <script type="module" async src="./JavaScript/funcions/buscar-libro.js"></script>
 
     <!--FONTS = Comfortaa | Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,15 +37,17 @@
     <!------------------------   MAIN   --------------------->
     <!------------------------------------------------------->
     <section class="pax-inicio-sen-rexistrar">
-      <input id="barra-busqueda" type="text" placeholder="Escribe aquí o libro que buscas...">
+      <input id="barra-busqueda" type="search" placeholder="Escribe aquí o libro que buscas...">
       <button type="submit" id="boton-busqueda"><img src="./imaxes/search.svg"></button>
+      <button id="boton-borrar-busqueda"><img src="./imaxes/x.svg"></button>
+     
     </section>
+    <table class="resultados-busqueda"></table>
     <!------------------------------------------------------->
     <!-----------------------   FOOTER   -------------------->
     <!------------------------------------------------------->
     <footer>
       <p class="copyright"></p>  
     </footer>
-
 </body>
 </html>
