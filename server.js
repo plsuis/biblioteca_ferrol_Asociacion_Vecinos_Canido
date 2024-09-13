@@ -21,7 +21,8 @@ const {
     devolverLibros,
     borrarLibros,
     actualizarLibros,
-    buscarLibros
+    buscarLibros,
+    prestadosLibros
 } = require("./middlewares/libros/index.js");
 const {
     readUsuarios,
@@ -59,6 +60,7 @@ app.get(endpoints.paxinas.logueados.bodyAdmin,comprobarUserToken,bodyAdministrac
 
 app.get(endpoints.libros.leotodos,readLibros)
 app.get(endpoints.libros.buscar,buscarLibros)
+app.get(endpoints.libros.prestados,prestadosLibros)
 
 // usuarios
 

@@ -206,6 +206,26 @@ class AccionsLibroBBDD{
         console.log(sentencia)
         return this.bbdd.consultarValores(sentencia,valores,"libro buscado")
     }
+
+    async prestados(tabla,campo){
+        let sentencia = `SELECT * FROM ${tabla.prestamos} INNER JOIN ${tabla.libro_prestado}
+        ON ${campo.codigo_libros_libro_prestado} = ${campo.codigo_libros_prestamos}
+        JOIN ${tabla.usuario}
+        ON ${campo.dni_usuario} = ${campo.dni_usuario_libro_prestado}
+        JOIN ${tabla.libros}
+        ON ${campo.codigo_libros} = ${campo.codigo_libros_libro_prestado}
+        group by ${campo.id_prestamos_libro_prestado}`;
+        //let sentencia1 = `SELECT * FROM ${tabla.prestamos} INNER JOIN ${tabla.libro_prestado} ON ${campo.codigo_libros_libro_prestado} = ${campo.codigo_libros_prestamos} JOIN ${tabla.usuario} ON ${campo.codigo_libros} = ${campo.codigo_libros_libro_prestado}`
+        try{
+            console.log(sentencia)
+            return this.bbdd.consultar(sentencia,"prestados")
+        }catch(error){
+            console.error(error)
+            throw Error("erro de consulta");
+            
+        }
+        
+    }
 }
 class AccionsUsuarioBBDD{
     constructor(bbdd){

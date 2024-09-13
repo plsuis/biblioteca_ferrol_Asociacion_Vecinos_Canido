@@ -22,7 +22,8 @@ const endpoints = {
         leotodos:"/leo-libros",
         devolver:"/devolver-libros/",
         actualizar:"/actualizar-libros/",
-        buscar:"/buscar-libros/"
+        buscar:"/buscar-libros/",
+        prestados:"/prestados-libros"
     },
     usuario:{
         insertar:"/insertar-usuarios",
