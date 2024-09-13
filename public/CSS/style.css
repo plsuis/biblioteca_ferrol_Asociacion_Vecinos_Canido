@@ -233,6 +233,7 @@ h2{
 }
 .lista-libros {
     text-align: center;
+    margin: 10px;
 }
 .tabla-libros{
     border: 1px solid black;
@@ -251,6 +252,21 @@ h2{
     border-collapse: collapse;
     padding: 10px;
 }
+
+.bin:hover {
+    cursor: pointer;
+    background-color:darkgray;
+  }
+  .save:hover {
+    cursor: pointer;
+    background-color:darkgray;
+  }
+  .pencil2:hover {
+    cursor: pointer;
+    background-color:darkgray;
+  }
+
+
 
 .links-form-prestamo{
     text-decoration: none;
@@ -388,8 +404,9 @@ form input{
 .resultados-busqueda{
     border: 1px solid black;
     border-collapse: collapse;
-    width: 100%;
+    width: 95%;
     margin-top: 2em;
+    margin: 10px;
 }
 
 .resultados-busqueda th {
