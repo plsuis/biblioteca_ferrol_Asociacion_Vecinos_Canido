@@ -99,7 +99,7 @@ footer{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    
+
 }
 #form-inicio-sesion div{
 display: flex;
@@ -111,11 +111,14 @@ justify-content: left;
     width: 30px;
 }
 .condicion-usuario {color:red;}
+
 #form-inicio-sesion input{
 padding: 10px;
 border: 1px solid #0981fa;
 border-radius: 5px;
+margin-left: 70px;
 }
+
 #form-inicio-sesion button{
     background-color: #0981fa;
     color: white;
@@ -233,7 +236,7 @@ h2{
 }
 .lista-libros {
     text-align: center;
-    margin: 10px;
+    margin: 20px;
 }
 .tabla-libros{
     border: 1px solid black;
@@ -283,6 +286,7 @@ h2{
 }
 .lista-prestamos {
     text-align: center;
+    margin: 20px;
 }
 .tabla-prestamos{
     border: 1px solid black;
@@ -364,7 +368,10 @@ form input{
     padding: 10px;
 }
 
-
+.lista-usuarios {
+    text-align: center;
+    margin: 20px;
+}
 .tabla-usuarios{
     border: 1px solid black;
     border-collapse: collapse;
