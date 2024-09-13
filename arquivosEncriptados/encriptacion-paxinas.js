@@ -111,7 +111,7 @@ const paxinasObxecto = {
     <footer>
         <p class="copyright"></p>
     </footer>`,
-        prestamos:""
+        prestamos:``
     },
     paxinas: {
         inicioAdmin:`  <!------------------------------------------------------->
