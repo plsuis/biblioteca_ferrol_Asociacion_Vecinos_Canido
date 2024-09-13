@@ -214,6 +214,7 @@ class AccionsLibroBBDD{
         ON ${campo.dni_usuario} = ${campo.dni_usuario_libro_prestado}
         JOIN ${tabla.libros}
         ON ${campo.codigo_libros} = ${campo.codigo_libros_libro_prestado}
+        WHERE ${campo.prestado_libro_prestado} = 1
         group by ${campo.id_prestamos_libro_prestado}`;
         //let sentencia1 = `SELECT * FROM ${tabla.prestamos} INNER JOIN ${tabla.libro_prestado} ON ${campo.codigo_libros_libro_prestado} = ${campo.codigo_libros_prestamos} JOIN ${tabla.usuario} ON ${campo.codigo_libros} = ${campo.codigo_libros_libro_prestado}`
         try{

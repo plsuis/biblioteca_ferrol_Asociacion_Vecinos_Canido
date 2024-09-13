@@ -20,7 +20,8 @@ const prestadosLibros = async (req,res) => {
             codigo_libros: `${datosTablas.campos.Libros[2]}`,
             id_prestamos_libro_prestado : `${datosTablas.campos.Libro_Prestado[0]}`,
             dni_usuario:`${datosTablas.campos.Usuario[3]}`,
-            dni_usuario_libro_prestado:`${datosTablas.campos.Libro_Prestado[2]}`
+            dni_usuario_libro_prestado:`${datosTablas.campos.Libro_Prestado[2]}`,
+            prestado_libro_prestado: `${datosTablas.campos.Libro_Prestado[1]}`
         }
         console.log(tabla,campo)
         let librosPrestados = await accion.prestados(tabla,campo)
