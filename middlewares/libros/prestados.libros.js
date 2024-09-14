@@ -23,9 +23,9 @@ const prestadosLibros = async (req,res) => {
             dni_usuario_libro_prestado:`${datosTablas.campos.Libro_Prestado[2]}`,
             prestado_libro_prestado: `${datosTablas.campos.Libro_Prestado[1]}`
         }
-        console.log(tabla,campo)
+        
         let librosPrestados = await accion.prestados(tabla,campo)
-
+        console.log(librosPrestados)
         res.send({
             mensaxe: librosPrestados
         })
