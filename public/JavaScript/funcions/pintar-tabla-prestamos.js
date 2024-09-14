@@ -84,14 +84,25 @@ const resgistroInputs = async () => {
     console.log("fila ",fila)
       /* dato = JSON.stringify(datosLibros[propiedade]); */
     
-    
-   };
 
-   //tabla.append(fila);
+
+
+  let iconosTD = document.createElement("td");
+
+  let devolver = document.createElement("p");
+  devolver.innerText = "DEVOLVER"
    
-    }
-   
-    
+  devolver.setAttribute("class", "devolver");
+
+  fila.append(iconosTD);
+  iconosTD.append(devolver);
 };
-
+};
+}
 resgistroInputs();  
+
+
+
+
+
+      

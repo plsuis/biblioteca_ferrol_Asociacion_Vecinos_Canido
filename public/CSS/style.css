@@ -426,3 +426,14 @@ form input{
     border-collapse: collapse;
     padding: 10px;
 }
+
+
+.devolver{
+    font-family: Comfortaa;
+    font-weight: bolder;
+}
+
+.devolver:hover {
+    cursor: pointer;
+    background-color:darkgray;
+  }
