@@ -8,7 +8,60 @@ const endpoints = {
 
 //----- FUNCION PARA PINTAR A TABOA DE LIBROS EDITABLE -----//
 let tabla = document.querySelector(".body-tabla");
-
+const columnaTabla = (propiedade,datosLibros) => {
+  let dato;
+    console.log('propiedade ',propiedade)
+    
+    //console.log(datosLibros[propiedade])
+     if(propiedade == 'ID_Prestamos'){
+       console.log('propiedade dato',propiedade,dato)
+       dato = JSON.stringify(datosLibros.ID_Prestamos);
+       return dato.replace(/\"/g, "");
+    }
+    if(propiedade == 'Titulo_Libros'){
+      console.log('propiedade dato',propiedade,dato)
+      dato = JSON.stringify(datosLibros.Titulo_Libros);
+      return dato.replace(/\"/g, "");
+    }
+    if(propiedade == 'Autor_Libros'){
+      console.log('propiedade dato',propiedade,dato)
+      dato = JSON.stringify(datosLibros.Autor_Libros);
+      return dato.replace(/\"/g, "");
+    }
+    if(propiedade == 'Apelido_1_Usuario'){
+      console.log('propiedade dato',propiedade,dato)
+      dato = JSON.stringify(datosLibros.Apelido_1_Usuario);
+      return dato.replace(/\"/g, "");
+    }
+    if(propiedade == 'Nome_Usuario'){
+      console.log('propiedade dato',propiedade,dato)
+      dato = JSON.stringify(datosLibros.Nome_Usuario);
+      return dato.replace(/\"/g, "");
+    }
+    if(propiedade == 'FechaDesde_Prestamos'){
+      console.log('propiedade dato',propiedade,dato)
+      dato = JSON.stringify(datosLibros.FechaDesde_Prestamos);
+      return dato.replace(/\"/g, "");
+    }
+    if(propiedade == 'FechaHasta_Prestamos'){
+      console.log('propiedade dato',propiedade,dato)
+      dato = JSON.stringify(datosLibros.FechaHasta_Prestamos);
+      return dato.replace(/\"/g, "");
+    } 
+}
+const cambiarOrdenPrestamos = (prestamo)=>{
+  let novoOrden = {
+    ID_Prestamos: prestamo.ID_Prestamos,
+    Titulo_Libros:prestamo.Titulo_Libros,
+    Autor_Libros: prestamo.Autor_Libros,
+    Apelido_1_Usuario: prestamo.Apelido_1_Usuario,
+    Nome_Usuario: prestamo.Nome_Usuario,
+    FechaDesde_Prestamos: prestamo.FechaDesde_Prestamos,
+    FechaHasta_Prestamos: prestamo.FechaHasta_Prestamos
+  };
+  return novoOrden
+  
+}
 const resgistroInputs = async () => {
     
     let datosRecibidos = await comunicacion(endpoints.libros.prestados);
@@ -16,28 +69,25 @@ const resgistroInputs = async () => {
     let i = 0;
     for (i = 0; i < datosRecibidos.mensaxe.length; i++) {
     let datosLibros = datosRecibidos.mensaxe[i];
-    console.log("datosLibros",datosLibros)
+    datosLibros = cambiarOrdenPrestamos(datosLibros)
     let fila = document.createElement("tr");
-    //console.log(fila)
     tabla.append(fila);
-          //let cliente = datosConvertidos[i];
+    
    for (let propiedade in datosLibros) {
     
     let celda = document.createElement("td");
-    let dato;
-    console.log()
-    console.log(datosLibros[propiedade])
-    if(datosLibros.ID_Prestamos){
-      dato = JSON.stringify(datosLibros.ID_Prestamos);
-      celda.innerHTML = dato.replace(/\"/g, "");
+    celda.innerHTML = columnaTabla(propiedade,datosLibros)
+    if(celda.textContent != 'undefined'){
       fila.append(celda);
     }
+    
+    console.log("fila ",fila)
       /* dato = JSON.stringify(datosLibros[propiedade]); */
     
     
    };
 
-
+   //tabla.append(fila);
    
     }
    
