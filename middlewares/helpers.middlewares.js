@@ -81,8 +81,14 @@ console.log("token info ",tokenInfo)
 comprobarUser (req,res,next,tokenInfo.user.Nome, tokenInfo.user.Contrasinal);
 }
 
+const novoTitulo = (titulo) => {
+  console.log("titulo[0].toUpperCase() ",titulo[0])
+  return titulo[0].toUpperCase() + titulo.slice(1,-1)
+}
+
 module.exports = {
     refBBDD,
     logueo,
-    comprobarUserToken
+    comprobarUserToken,
+    novoTitulo
 }

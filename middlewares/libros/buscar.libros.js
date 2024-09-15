@@ -3,7 +3,7 @@ const { sentenciaSql } = require("../../bbdd/sentencias.bbdd.js");
 const { Usuario, AccionsUsuarioBBDD, AccionsLibroBBDD } = require("../../clases/clases.js");
 const { datosTablas } = require("../../datos/varios.js");
 //const { isErroOpenBBDD } = require('../../bbdd/helpers.bbdd.js');
-const { refBBDD } = require('../helpers.middlewares.js');
+const { refBBDD, novoTitulo } = require('../helpers.middlewares.js');
 
 const buscarLibros = async (req,res,next)=>{
   
@@ -14,10 +14,9 @@ const buscarLibros = async (req,res,next)=>{
         let campos ={
             titulo:datosTablas.campos.Libros[0]
         }
-        let valores = `'${req.query.textoTitulo}'`//esta titulo terá que vir dende o cliente sen espacios no inicio e final ==> string.trim()
+        let valores = req.query.textoTitulo//esta titulo terá que vir dende o cliente sen espacios no inicio e final ==> string.trim()
         
-        console.log('campos ',campos,'valores ',valores)
-        let libros = await accion.buscar(datosTablas.tablas.Libros,campos,valores)
+        let libros = await accion.buscar(datosTablas.tablas.Libros,campos,`'%${novoTitulo(valores)}%'`)
         console.log("libros ",libros)
         res.send({
             mensaxe:libros
