@@ -34,26 +34,27 @@ const pintarTabla = (datoRecibido,textoTitulo)=>{
   let datosLibros = datoRecibido.mensaxe;
   console.log("datosLibros EN PINTAR TABLA ???",datosLibros)
   let fila = document.createElement("tr");
-      tabla.append(fila);
-
-      let tdTitulo = document.createElement("th");
-      tdTitulo.innerText = "Título";
+  let tdTitulo = document.createElement("th");
+  tdTitulo.innerText = "Título";
+  let tdAutor = document.createElement("th");
+  tdAutor.innerText = "Autor";
+  let tdIsbn = document.createElement("th");
+  tdIsbn.innerText = "ISBN";
+  let tdEditorial = document.createElement("th");
+  tdEditorial.innerText = "Editorial";
+  let tdAno = document.createElement("th");
+  tdAno.innerText = "Ano de Edición";
+  let tdXenero = document.createElement("th");
+  tdXenero.innerText = "Xénero";
       fila.append(tdTitulo);
-      let tdAutor = document.createElement("th");
-      tdAutor.innerText = "Autor";
       fila.append(tdAutor);
-      let tdIsbn = document.createElement("th");
-      tdIsbn.innerText = "ISBN";
       fila.append(tdIsbn);
-      let tdEditorial = document.createElement("th");
-      tdEditorial.innerText = "Editorial";
       fila.append(tdEditorial);
-      let tdAno = document.createElement("th");
-      tdAno.innerText = "Ano de Edición";
       fila.append(tdAno);
-      let tdXenero = document.createElement("th");
-      tdXenero.innerText = "Xénero";
       fila.append(tdXenero);
+      console.log("fila ",fila)
+      tabla.append(fila);
+      console.log("tabla ",tabla)
   if(datosLibros !== undefined){
     
   //console.log("datoRecibido.mensaxe antes",datoRecibido.mensaxe)
