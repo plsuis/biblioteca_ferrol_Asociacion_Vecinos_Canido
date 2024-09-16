@@ -9,26 +9,31 @@ const endpoints = {
 
 let inputBarraBusqueda = document.querySelector("#barra-busqueda");
 let botonBuscar = document.querySelector("#boton-busqueda");
-let tabla = document.querySelector(".resultados-busqueda");
+//let tabla = document.querySelector(".resultados-busqueda");
 let botonBorrarBuscar = document.querySelector("#boton-borrar-busqueda");
-
-//----- FUNCION PARA BUSCAR UN LIBRO CONCRETO -----//
-inputBarraBusqueda.addEventListener("input", async() =>{
-  //tabla.childrenNodes.remove()
-  let valorInput = inputBarraBusqueda.value;
+let numLibros = []
+const borrandoTabla = (textoTitulo,datoRecibido)=>{
+  let tabla = document.querySelector(".resultados-busqueda");
   
-  let textoTitulo = valorInput.trim().toLowerCase();
-  console.log("Valor Input-->", textoTitulo);
+  console.log("inicio ",numLibros,datoRecibido.mensaxe.length)
+  console.log("datoRecibido.mensaxe ",datoRecibido.mensaxe)
+  console.log("num filas tabla.childElementCount ",tabla.childElementCount)
+  let cantidadBorrar = tabla.childElementCount - datoRecibido.mensaxe.length - 1;
+  console.log("cantidadBorrar ",cantidadBorrar,tabla.childElementCount)
+  if(textoTitulo.length > 1){
+    for(let i = 0; i < cantidadBorrar ; i++){
+      console.log("borrando i",i,"cantidadBorrar ",cantidadBorrar)
+      console.log("tabla.childNodes[i] ",tabla.childNodes[i])
+      //tabla.childNodes[i].remove()
+    }
+  }
   
-  let datoRecibido = await comunicacionBuscar(`buscar-libros/?textoTitulo=${textoTitulo}`);
-  //console.log("inputBarraBusqueda.addEventListener datoRecibido.mensaxe ",datoRecibido.mensaxe)
-  let i = 0;
+}
+const pintarTabla = (datoRecibido,textoTitulo)=>{
+  let tabla = document.querySelector(".resultados-busqueda");
   let datosLibros = datoRecibido.mensaxe;
-  //console.log(datosLibros)
-  if(datosLibros !== undefined){
-  
-
-      let fila = document.createElement("tr");
+  console.log("datosLibros EN PINTAR TABLA ???",datosLibros)
+  let fila = document.createElement("tr");
       tabla.append(fila);
 
       let tdTitulo = document.createElement("th");
@@ -49,28 +54,48 @@ inputBarraBusqueda.addEventListener("input", async() =>{
       let tdXenero = document.createElement("th");
       tdXenero.innerText = "Xénero";
       fila.append(tdXenero);
-
- 
-  console.log("datoRecibido.mensaxe antes",datoRecibido.mensaxe)
- 
+  if(datosLibros !== undefined){
+    
+  //console.log("datoRecibido.mensaxe antes",datoRecibido.mensaxe)
+     
       for (let i = 0; i < datoRecibido.mensaxe.length; i++) {
       
         let fila = document.createElement("tr");
         
         for (let propiedade in datosLibros[i]) {
-          console.log(" let propiedade in datosLibros ",propiedade)
+          console.log("pintando i ",i)
           let celda = document.createElement("td");
           let dato = JSON.stringify(datosLibros[i][propiedade]);
-          console.log("dato ",dato);
+          //console.log("dato ",dato);
           celda.innerHTML = dato.replace(/\"/g, "");
-          console.log("celda? ",celda)
+          //console.log("celda? ",celda)
           fila.append(celda);  
         }
-        console.log("fila ",fila)
+        //console.log("fila ",fila)
         tabla.append(fila);
       }
-    
+
+      borrandoTabla(textoTitulo,datoRecibido)
   }
+  
+  numLibros.length = 0;
+  console.log("numLibros.length ",numLibros.length)
+}
+//----- FUNCION PARA BUSCAR UN LIBRO CONCRETO -----//
+inputBarraBusqueda.addEventListener("input", async() =>{
+  //tabla.childrenNodes.remove()
+  let valorInput = inputBarraBusqueda.value;
+  let textoTitulo = valorInput.trim().toLowerCase();
+  
+  console.log("Valor Input-->", textoTitulo);
+  
+  //tabla.childNodes.remove()
+  let datoRecibido = await comunicacionBuscar(`buscar-libros/?textoTitulo=${textoTitulo}`);
+  
+  numLibros.push(datoRecibido.mensaxe.length);
+  //console.log("numLibros  ",numLibros)
+  
+  pintarTabla(datoRecibido,textoTitulo)
 })
 botonBuscar.addEventListener("click", async() =>{
 
