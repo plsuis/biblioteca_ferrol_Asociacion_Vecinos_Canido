@@ -1,3 +1,4 @@
+//document.querySelector(`[wiid=${num}]`)
 import { comunicacionBuscar } from "../comunicacion/comunicacion.js";
 
 const endpoints = {
@@ -9,94 +10,66 @@ const endpoints = {
 
 let inputBarraBusqueda = document.querySelector("#barra-busqueda");
 let botonBuscar = document.querySelector("#boton-busqueda");
-//let tabla = document.querySelector(".resultados-busqueda");
-let botonBorrarBuscar = document.querySelector("#boton-borrar-busqueda");
-let numLibros = []
-const borrandoTabla = (textoTitulo,datoRecibido)=>{
-  let tabla = document.querySelector(".resultados-busqueda");
-  
-  console.log("inicio ",numLibros,datoRecibido.mensaxe.length)
-  console.log("datoRecibido.mensaxe ",datoRecibido.mensaxe)
-  console.log("num filas tabla.childElementCount ",tabla.childElementCount)
-  let cantidadBorrar = tabla.childElementCount - datoRecibido.mensaxe.length - 1;
-  console.log("cantidadBorrar ",cantidadBorrar,tabla.childElementCount)
-  if(textoTitulo.length > 1){
-    for(let i = 0; i < cantidadBorrar ; i++){
-      console.log("borrando i",i,"cantidadBorrar ",cantidadBorrar)
-      console.log("tabla.childNodes[i] ",tabla.childNodes[i])
-      //tabla.childNodes[i].remove()
-    }
-  }
-  
-}
-const pintarTabla = (datoRecibido,textoTitulo)=>{
-  let tabla = document.querySelector(".resultados-busqueda");
-  let datosLibros = datoRecibido.mensaxe;
-  console.log("datosLibros EN PINTAR TABLA ???",datosLibros)
-  let fila = document.createElement("tr");
-  let tdTitulo = document.createElement("th");
-  tdTitulo.innerText = "Título";
-  let tdAutor = document.createElement("th");
-  tdAutor.innerText = "Autor";
-  let tdIsbn = document.createElement("th");
-  tdIsbn.innerText = "ISBN";
-  let tdEditorial = document.createElement("th");
-  tdEditorial.innerText = "Editorial";
-  let tdAno = document.createElement("th");
-  tdAno.innerText = "Ano de Edición";
-  let tdXenero = document.createElement("th");
-  tdXenero.innerText = "Xénero";
-      fila.append(tdTitulo);
-      fila.append(tdAutor);
-      fila.append(tdIsbn);
-      fila.append(tdEditorial);
-      fila.append(tdAno);
-      fila.append(tdXenero);
-      console.log("fila ",fila)
-      tabla.append(fila);
-      console.log("tabla ",tabla)
-  if(datosLibros !== undefined){
-    
-  //console.log("datoRecibido.mensaxe antes",datoRecibido.mensaxe)
-     
-      for (let i = 0; i < datoRecibido.mensaxe.length; i++) {
-      
-        let fila = document.createElement("tr");
-        
-        for (let propiedade in datosLibros[i]) {
-          console.log("pintando i ",i)
-          let celda = document.createElement("td");
-          let dato = JSON.stringify(datosLibros[i][propiedade]);
-          //console.log("dato ",dato);
-          celda.innerHTML = dato.replace(/\"/g, "");
-          //console.log("celda? ",celda)
-          fila.append(celda);  
-        }
-        //console.log("fila ",fila)
-        tabla.append(fila);
-      }
+let tabla = document.querySelector(".resultados-busqueda");
 
-      borrandoTabla(textoTitulo,datoRecibido)
+let botonBorrarBuscar = document.querySelector("#boton-borrar-busqueda");
+
+const pintarHead = (datoRecibido) => {
+  let thead = document.createElement("thead");
+  let tr = document.createElement("tr");
+  for(let libro in datoRecibido.mensaxe[0]){
+    console.log(`${libro} = ${datoRecibido.mensaxe[0][libro]}`)
+    let th = document.createElement("th");
+    th.innerHTML = libro;
+    tr.append(th)
+    thead.append(tr)
+  }
+  tabla.append(thead)
+}
+const pintarTabla = (datoRecibido,condicion)=>{
+  console.log("condicion ",condicion)
+  let tbody = document.createElement("tbody");
+  if(condicion){
+    let refTbody = document.querySelector("tbody");
+    refTbody.remove()
   }
   
-  numLibros.length = 0;
-  console.log("numLibros.length ",numLibros.length)
+  for(let libro of datoRecibido.mensaxe){
+    let tr = document.createElement("tr");
+    for(let propiedadLibro in libro){
+      let td = document.createElement("td");
+      td.innerHTML = libro[propiedadLibro];
+      tr.append(td)
+    }
+    tbody.append(tr)
+    tabla.append(tbody)
+  }
 }
 //----- FUNCION PARA BUSCAR UN LIBRO CONCRETO -----//
 inputBarraBusqueda.addEventListener("input", async() =>{
-  //tabla.childrenNodes.remove()
+  
   let valorInput = inputBarraBusqueda.value;
   let textoTitulo = valorInput.trim().toLowerCase();
   
   console.log("Valor Input-->", textoTitulo);
   
-  //tabla.childNodes.remove()
-  let datoRecibido = await comunicacionBuscar(`buscar-libros/?textoTitulo=${textoTitulo}`);
+  if(textoTitulo !== ""){
+    let datoRecibido = await comunicacionBuscar(`buscar-libros/?textoTitulo=${textoTitulo}`);
+    console.log("datoRecibido.mensaxe ",datoRecibido.mensaxe)
+    
+    let condicion = textoTitulo.length > 1;
+    
+    if(condicion){
+      console.log("textoTitulo.length > 1 ",textoTitulo)
+      pintarTabla(datoRecibido,condicion)
+    }else{
+      pintarHead(datoRecibido)
+      pintarTabla(datoRecibido,condicion)
+    }
+  }
   
-  numLibros.push(datoRecibido.mensaxe.length);
-  //console.log("numLibros  ",numLibros)
   
-  pintarTabla(datoRecibido,textoTitulo)
+ 
 })
 botonBuscar.addEventListener("click", async() =>{
 
