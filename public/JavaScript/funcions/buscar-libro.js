@@ -47,7 +47,7 @@ const pintarTabla = (datoRecibido,condicion)=>{
 }
 //----- FUNCION PARA BUSCAR UN LIBRO CONCRETO -----//
 inputBarraBusqueda.addEventListener("input", async() =>{
-  
+  let tbody = document.createElement("tbody");
   let valorInput = inputBarraBusqueda.value;
   let textoTitulo = valorInput.trim().toLowerCase();
   
@@ -65,6 +65,12 @@ inputBarraBusqueda.addEventListener("input", async() =>{
     }else{
       pintarHead(datoRecibido)
       pintarTabla(datoRecibido,condicion)
+    }
+  }else if(textoTitulo == ""){
+    console.log("tabla.childElementCount ?",tabla.childElementCount)
+    for(let i = tabla.childElementCount - 1;i >= 0; i--){
+      console.log(i)
+      tabla.children[i].remove()
     }
   }
   
